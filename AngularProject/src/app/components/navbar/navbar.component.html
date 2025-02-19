@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <!-- nav -->
+    <!-- HAY QUE MEJORARLO, PROBLEMAS RESPONSIVE-->
+    <div class="container text-center">
+        <!-- <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/UNO_Logo.svg" alt="logo"> -->
+            <div class="d-flex justify-content-center">
+                <svg class="col-2" viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ovalo rojo inclinado -->
+                    <ellipse cx="150" cy="100" rx="130" ry="70" fill="red" transform="rotate(-15,150,100)" />
+                    <!-- Texto UPC con efecto de sombra -->
+                    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
+                        fill="black" stroke="white" stroke-width="10" text-anchor="middle" alignment-baseline="middle" z-index="20">
+                        UPC
+                    </text>
+                    <text x="52%" y="52%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
+                        fill="white" stroke="black" stroke-width="10" text-anchor="middle" alignment-baseline="middle" z-index="1">
+                        UPC
+                    </text>
+                    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
+                        fill="yellow" text-anchor="middle" alignment-baseline="middle">
+                        UPC
+                    </text>
+                </svg>
+            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="nav-item col-2 text-light">
+                <span id="cdn">TEXTO</span>
+            </div>
+            <div class="nav-item col-2 d-block d-lg-none">
+                <a class="nav-link fs-4 text-light" href="#">UNO</a>
+            </div>
+            <div class="nav-item col-2">
+                <a class="nav-link fs-4 text-light" href="#">Team</a>
+            </div>
+            <div class="nav-item col-2">
+                <a class="nav-link fs-4 text-light" href="#">Tecnologias</a>
+            </div>
+            <div class="nav-item col-2">
+                <a class="nav-link fs-4 text-light" href="#">Ganadores</a>
+            </div>
+            <div class="text-center col-2">
+                <button class="nav-item btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+4</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header bg-light">
+        <h5 id="offcanvasRightLabel">UNO</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body bg-light">
+        <p><a href="#">Reglas del juego</a></p>
+        <p><a href="#">Score sheet</a></p>
+        <p><a href="#">Equipo</a></p>
+        <p><a href="#">Formulario de inscripcción</a></p>
+        <!-- reglas del juego (mirar de hacer una card ancha)-->
+        <!-- score sheet -->
+        <!-- equipo (cards object-fit) -->
+        <!-- formulario de inscripcción -->
+    </div>
+</div>

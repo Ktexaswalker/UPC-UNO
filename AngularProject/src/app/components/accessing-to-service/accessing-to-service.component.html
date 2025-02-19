@@ -1,0 +1,13 @@
+<p>accessing-to-service works!</p>
+<h2>La primera crida al servidor:</h2>
+<ul>
+    @for(post of myPosts;track post){
+    <li>{{post.title}}</li>
+    }
+</ul>
+
+<hr>
+<hr>
+<h2>La segona crida al servidor:</h2>
+{{value | json}}
+{{errors}}

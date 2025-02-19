@@ -1,0 +1,23 @@
+<div class="container justify-content-center">
+    <h1>Registro</h1>
+    <form [formGroup]="contactForm">
+        <!-- NOM -->
+        <div class="mb3 mt-3">
+            <label for="username" class="form-label">Username:</label>
+            <input class="form-control" type="text" id="username" formControlName="username"
+                placeholder="Escriu l'usuari" required />
+        </div>
+        <!-- CONTRASENYA -->
+        <div class="mb3 mt-3">
+            <label for="password" class="form-label">Password:</label>
+            <input class="form-control" type="password" id="password" formControlName="password"
+                placeholder="Escriu la contrasenya" required />
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="contactForm.invalid">Registrarse</button>
+    </form>
+    <br>
+    <p class="mt-3">
+        {{ message }}
+    </p>
+</div>
