@@ -1,52 +1,112 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <!-- nav -->
-    <!-- HAY QUE MEJORARLO, PROBLEMAS RESPONSIVE-->
-    <div class="container text-center">
-        <!-- <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/UNO_Logo.svg" alt="logo"> -->
-            <div class="d-flex justify-content-center">
-                <svg class="col-2" viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Ovalo rojo inclinado -->
-                    <ellipse cx="150" cy="100" rx="130" ry="70" fill="red" transform="rotate(-15,150,100)" />
-                    <!-- Texto UPC con efecto de sombra -->
-                    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
-                        fill="black" stroke="white" stroke-width="10" text-anchor="middle" alignment-baseline="middle" z-index="20">
-                        UPC
-                    </text>
-                    <text x="52%" y="52%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
-                        fill="white" stroke="black" stroke-width="10" text-anchor="middle" alignment-baseline="middle" z-index="1">
-                        UPC
-                    </text>
-                    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
-                        fill="yellow" text-anchor="middle" alignment-baseline="middle">
-                        UPC
-                    </text>
-                </svg>
-            </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="nav-item col-2 text-light">
-                <span id="cdn">TEXTO</span>
-            </div>
-            <div class="nav-item col-2 d-block d-lg-none">
-                <a class="nav-link fs-4 text-light" href="#">UNO</a>
-            </div>
-            <div class="nav-item col-2">
-                <a class="nav-link fs-4 text-light" href="#">Team</a>
-            </div>
-            <div class="nav-item col-2">
-                <a class="nav-link fs-4 text-light" href="#">Tecnologias</a>
-            </div>
-            <div class="nav-item col-2">
-                <a class="nav-link fs-4 text-light" href="#">Ganadores</a>
-            </div>
-            <div class="text-center col-2">
-                <button class="nav-item btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+4</button>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-dark z-1 front bg-dark fixed-top">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center pt-3">
+            <svg class="ancho ms-4" viewBox="0 20 300 250" xmlns="http://www.w3.org/2000/svg">
+                <!-- Ovalo rojo inclinado -->
+                <ellipse cx="150" cy="100" rx="130" ry="70" fill="red" transform="rotate(-15,150,100)" />
+                <!-- Texto UPC con efecto de sombra -->
+                <text x="50%" y="44%" font-family="Arial, sans-serif" font-size="65" font-weight="bold" 
+                    fill="black" stroke="white" stroke-width="10" text-anchor="middle" alignment-baseline="middle" z-index="20">
+                    UPC
+                </text>
+                <text x="51%" y="45%" font-family="Arial, sans-serif" font-size="65" font-weight="bold" 
+                    fill="white" stroke="black" stroke-width="10" text-anchor="middle" alignment-baseline="middle" z-index="1">
+                    UPC
+                </text>
+                <text x="50%" y="44%" font-family="Arial, sans-serif" font-size="70" font-weight="bold" 
+                    fill="yellow" text-anchor="middle" alignment-baseline="middle">
+                    UPC
+                </text>
+            </svg>
+        </div>
+        <button id="btn-rules" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button" routerLink="rules">
+            Rules
+        </button>
+        <button id="btn-aboutus" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button" routerLink="aboutus">
+            About Us
+        </button>
+        @if(!logeado) {
+            <button id="btn-login" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button" routerLink="login">
+                Login
+            </button>
+            <button id="btn-registro" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button" routerLink="registro">
+                Registro
+            </button>
+        }
+        @if (logeado) {
+            <button id="btn-admin" class="btn btn-outline-success me-2 mt-1 d-none d-md-block" type="button" routerLink="admin">
+                Administració
+            </button>
+            <button id="btn-logout" class="btn btn-outline-success me-2 mt-1 d-none d-md-block" type="button" routerLink="logout">
+                Logout
+            </button>
+        }
+        <!-- boton ventana lateral -->
+        <div class="text-center col-2 d-none d-md-block">
+            <button class="nav-item btn btn-danger mt-1" type="button" 
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" 
+            aria-controls="offcanvasRight" aria-expanded="false" aria-label="Toggle navigation">+4</button>
+        </div>
+        <!-- boton vista peque -->
+        <div class="text-center col-2 d-block d-md-none">
+            <button class="nav-item btn btn-danger mt-1 navbar-toggler pt-2 pb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerD3" aria-controls="navbarTogglerD3">+4</button>
         </div>
     </div>
+    <div class="collapse navbar-collapse justify-content-around" id="navbarTogglerD3">
+        <ul class="navbar-nav me-5 ms-3 ps-3">
+            <li class="navbar-item d-lg-none">
+                <span class="nav-link text-secondary h6">
+                    <button id="btn-rules" class="btn btn-outline-warning me-2 text-secondary mt-1 d-md-none d-block" type="button" routerLink="rules">
+                        Rules
+                    </button>
+                </span>
+            </li>
+            <li class="navbar-item d-lg-none">
+                <span class="nav-link text-secondary h6">
+                    <button id="btn-aboutus" class="btn btn-outline-warning me-2 text-secondary d-md-none d-block" type="button" routerLink="aboutus">
+                        About Us
+                    </button>
+                </span>
+            </li>
+            @if(!logeado) {
+                <li class="navbar-item d-lg-none">
+                    <span class="nav-link text-secondary h6">
+                        <button id="btn-login" class="btn btn-outline-warning me-2 text-secondary d-md-none d-block" type="button" routerLink="login">
+                            Login
+                        </button>
+                    </span>
+                <li class="navbar-item d-lg-none">
+                    <span class="nav-link text-secondary h6">
+                        <button id="btn-registro" class="btn btn-outline-warning me-2 text-secondary d-md-none d-block" type="button" routerLink="registro">
+                            Registro
+                        </button>
+                    </span>
+                </li>
+            }
+            @if (logeado) {
+                <li class="navbar-item d-lg-none">
+                    <span class="nav-link text-secondary h6">
+                        <button id="btn-admin" class="btn btn-outline-success me-2 d-none d-md-block" type="button" routerLink="admin">
+                            Administració
+                        </button>
+                    </span>
+                </li>
+                <li class="navbar-item d-lg-none">
+                    <span class="nav-link text-secondary h6">
+                        <button id="btn-logout" class="btn btn-outline-warning me-2 d-none d-md-block" type="button" routerLink="logout">
+                            Logout
+                        </button>
+                    </span>
+                </li>
+            }
+        </ul>
+    </div>
 </nav>
+
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header bg-light">
-        <h5 id="offcanvasRightLabel">UNO</h5>
+        <h5 id="offcanvasRightLabel">UPC-UNO</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body bg-light">
