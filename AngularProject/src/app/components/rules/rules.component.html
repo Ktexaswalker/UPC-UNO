@@ -1,1 +1,118 @@
-<p>rules works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4 d-lg-block">
+            
+        </div>
+        <div class="col-lg-8 col-xxs-12">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Preparación del juego
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>
+                                Se juega con un mazo de 108 cartas, que incluyen cartas numeradas del 0 al 9 y cartas especiales. <br>
+                                Cada jugador recibe <strong>7 cartas</strong> al inicio de la partida. <br>
+                                El resto del mazo se coloca boca abajo en el centro, formando el <strong>mazo de robo</strong>. <br>
+                                Se toma la primera carta del mazo y se coloca boca arriba, iniciando la pila de descarte. <br>
+                                Si la carta inicial es una carta de acción, se aplican sus efectos inmediatamente. <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Objetivo del juego
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            El objetivo es ser el primer jugador en quedarse sin cartas en la mano. <br>
+                            Los jugadores ganan puntos por las cartas que les quedan a los oponentes cuando ellos se quedan sin cartas. <br>
+                            El juego continúa hasta que un jugador alcance una cantidad preestablecida de puntos (generalmente 500).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Turnos y cómo jugar cartas
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            En su turno, un jugador debe descartar <strong>una carta</strong> que coincida con la carta superior del mazo de descarte en <strong>color o número</strong>. <br>
+                            Si no tiene una carta válida, debe <strong>robar</strong> una carta del mazo. <br>
+                            Si la carta robada puede jugarse, el jugador puede descartarla inmediatamente; si no, pasa su turno.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Cartas especiales y su efecto
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>+2 (Roba Dos)</strong>: El siguiente jugador roba <strong>dos cartas</strong> y pierde su turno.<br>
+                            <strong>Cambio de sentido</strong>: Invierte el orden del juego. <br>
+                            <strong>Salto (Skip)</strong>: El siguiente jugador pierde su turno. <br>
+                            <strong>Comodín (Wild)</strong>: Permite al jugador elegir el color que se jugará. <br>
+                            <strong>+4 (Comodín Roba Cuatro)</strong>: El jugador elige un color y el siguiente jugador <strong>roba cuatro cartas</strong> y pierde su turno (pero solo se puede jugar si no tienes cartas del color actual en la mano).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="#collapseFive">
+                            Decir "UNO"
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Cuando un jugador tiene <strong>una sola carta en la mano</strong>, debe gritar "UNO" antes de que otro jugador lo note. <br>
+                            Si otro jugador lo atrapa antes de que lo diga, debe <strong>robar dos cartas</strong> como penalización.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="#collapseSix">
+                            Finalización de una ronda y puntuación
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Cuando un jugador descarta su última carta, la ronda termina. <br>
+                            Los demás jugadores suman puntos por las cartas que aún tienen en la mano: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Cartas numeradas: su valor numérico. <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Cartas de acción (+2, salto, cambio de sentido): <strong>20 puntos</strong>. <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Comodines y +4: <strong>50 puntos</strong>. <br>
+                            El juego continúa hasta que un jugador alcanza <strong>500 puntos</strong> o cualquier otra cantidad previamente acordada.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="#collapseSeven">
+                            Reglas adicionales y estrategias
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>No se pueden jugar dos cartas a la vez</strong>: Solo puedes jugar <strong>una carta por turno</strong>. <br>
+                            <strong>No puedes jugar +4 si tienes el color en tu mano</strong>: Si un jugador sospecha que el +4 se ha jugado de manera incorrecta, puede <strong>desafiarlo</strong>. Si el desafiante tiene razón, el jugador que jugó el +4 debe <strong>robar cuatro cartas</strong> en su lugar. <br>
+                            <strong>Estrategia del salto y cambio de sentido</strong>: Úsalos para perjudicar a jugadores que tengan pocas cartas. <br>
+                            <strong>Controla los colores</strong>: Trata de cambiar el color del juego para favorecer tus cartas restantes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,3 +2,16 @@
     width: 90%;
     height: 90%;
 }
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    /* Asegura que no interfiera con el contenido */
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(81, 165, 252, 0.9612219887955182) 28%, rgba(71, 166, 237, 1) 48%, rgba(58, 13, 219, 1) 79%, rgba(134, 70, 252, 1) 100%);
+    overflow: hidden;
+    /* Oculta cualquier exceso */
+}
