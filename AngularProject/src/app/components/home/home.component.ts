@@ -4,6 +4,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   selector: 'app-home',
   standalone: true,
   imports: [
+
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -11,7 +12,8 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 export class HomeComponent implements OnInit{
   private background!: HTMLElement;
   private intervalId!: number;
-
+  private intervalUNO!: number;
+  logo: string = "UPC";
   constructor(private renderer: Renderer2) {}
 
   ngOnInit(): void {
@@ -19,6 +21,9 @@ export class HomeComponent implements OnInit{
     if (!this.background) return;
     
     this.intervalId = window.setInterval(() => this.createAnimatedElement(), 600);
+    this.intervalUNO = window.setInterval(() => {
+      this.logo = this.logo === 'UNO' ? 'UPC' : 'UNO';
+    }, 2000);
   }
 
   private createAnimatedElement(): void {
@@ -119,5 +124,6 @@ export class HomeComponent implements OnInit{
 
   ngOnDestroy(): void {
     clearInterval(this.intervalId);
+    clearInterval(this.intervalUNO);
   }
 }
