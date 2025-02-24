@@ -4,7 +4,7 @@
 //és normal fixar com a nom del pquet una constant amb el mateix nom que el paquet requerit
 const express = require("express");
 const bodyParser = require("body-parser");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const cors = require('cors');
 
 //aquesta constant estableix la cadena de connexió
