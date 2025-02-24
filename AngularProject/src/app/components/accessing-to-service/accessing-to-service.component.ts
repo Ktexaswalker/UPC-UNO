@@ -5,7 +5,9 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-accessing-to-service',
   standalone: true,
-  imports: [AccessingToServiceComponent, JsonPipe],
+  imports: [
+    JsonPipe
+  ],
   templateUrl: './accessing-to-service.component.html',
   styleUrl: './accessing-to-service.component.css'
 })
