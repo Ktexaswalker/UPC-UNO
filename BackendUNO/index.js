@@ -267,3 +267,5 @@ app.listen(3000, () => {
 })
 
 // npm start
+// Millor fer node index.js
+// És mes específic per a executar l'arxiu del servidor
