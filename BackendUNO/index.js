@@ -126,6 +126,9 @@ app.get('/prova', authenticateJWT, (req, res)=> {
 //Envio el accessToken a las solicitudes de la api con Interceptor
 //Se crea el interceptor independiente, y se debe incrustrar en el app.config.ts
 
+
+//Register no necessita autenticació JWT
+
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
 
@@ -154,6 +157,60 @@ app.post('/register', (req, res) => {
         }
     );
 });
+
+//Endpoints CRUD Torneo
+
+//READ
+app.get('/torneos', (req, res) => {
+
+    connection.query(
+        "SELECT * FROM torneos",
+        (error, results) => {
+            if (error) {
+                res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
+            }
+            if (results.length > 0) {
+                res.status(200).send({ error: false, message: "Torneos obtinguts correctament",
+                    torneos: results
+                 });
+            }
+            else {
+                res.status(404).send({ error: true, message: "No hi ha torneos" });
+            }
+        }
+    );
+
+});
+
+//CREATE
+app.post('/torneos', (req, res) =>{
+
+    connection.query(
+        "SELECT * FROM torneos WHERE torneo = ?",
+        [torneo],
+        (error, results) => {
+            if (error) {
+                return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
+            }
+            if (results.length > 0) {
+                return res.status(400).send({ error: true, message: "Torneo ja registrat" });
+            }
+            // Inserim el nou torneo
+            connection.query(
+                "INSERT INTO torneos (torneo, description) VALUES (?, ?)",
+                [torneo, password],
+                (error, results) => {
+                    if (error) {
+                        return res.status(500).send({ error: true, message: "Error al registrar el torneig" });
+                    }
+                    res.status(201).send({ error: false, message: "Torneo registrat correctament" });
+                }
+            );
+        }
+    );
+
+});
+
 
 //aquesta aplicació li assignes el port 3000
 app.listen(3000, () => {
