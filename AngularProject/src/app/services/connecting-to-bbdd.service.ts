@@ -23,7 +23,7 @@ export class ConnectingToBbddService {
           alert(localStorage.getItem('accessToken'));
           console.log(localStorage.getItem('accessToken'));
           localStorage.clear();
-
+          //test
         }
       })
     );
