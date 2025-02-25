@@ -1,11 +1,12 @@
+<div class="pt-5 invisible z-2" id="tecnologias"></div>
 <div class="container-fluid">
     <div class="row" id="gallery">
         <div class="col text-center pb-4">
         <h4 class="h1">Tecnologias</h4>
             <p id="filter-buttons">
-                <button class="btn mb-2 px-0 btn btn-light" onclick="filterSelection('todas')">Todas</button> | 
-                <button class="btn mb-2 px-0 btn btn-light" onclick="filterSelection('juego')">Del juego</button> |
-                <button class="btn mb-2 px-0 btn btn-light" onclick="filterSelection('web')">De la web</button>
+                <button class="btn mb-2 px-0 btn btn-light" (click)="filterSelection('todas')">Todas</button> | 
+                <button class="btn mb-2 px-0 btn btn-light" (click)="filterSelection('juego')">Del juego</button> |
+                <button class="btn mb-2 px-0 btn btn-light" (click)="filterSelection('web')">De la web</button>
             </p>
             <div class="container-fluid">
                 <div class="row">

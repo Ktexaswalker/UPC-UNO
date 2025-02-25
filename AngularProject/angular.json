@@ -28,6 +28,7 @@
             ],
             "styles": [
                 "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "node_modules/animate/animate.css",
                 "src/styles.css"
             ],
             "scripts": [

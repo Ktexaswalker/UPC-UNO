@@ -9,22 +9,22 @@ import { HomeComponent } from './components/home/home.component';
 import { RulesComponent } from './components/rules/rules.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'rules',
-    component: RulesComponent
-  },
-  {
-    path: 'aboutus',
-    component: AboutusComponent
-  },
-  {
-    path: 'accessingtoservice',
-    component: AccessingToServiceComponent
-  },
+  // {
+  //   path: '',
+  //   component: HomeComponent
+  // },
+  // {
+  //   path: 'rules',
+  //   component: RulesComponent
+  // },
+  // {
+  //   path: 'aboutus',
+  //   component: AboutusComponent
+  // },
+  // {
+  //   path: 'accessingtoservice',
+  //   component: AccessingToServiceComponent
+  // },
   {
     path: '**',
     redirectTo: 'pagina404'
@@ -33,16 +33,16 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
-    path: 'registro',
-    component: RegistroComponent
-  },
-  {
-    path: 'admin',
-    component: AdminComponent
-  },
-  {
-    path: 'logout',
-    component: LogoutComponent
-  },
+  // {
+  //   path: 'registro',
+  //   component: RegistroComponent
+  // },
+  // {
+  //   path: 'admin',
+  //   component: AdminComponent
+  // },
+  // {
+  //   path: 'logout',
+  //   component: LogoutComponent
+  // },
 ];

@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
   username: string =  '';
   userpass: string =  '';
   
-  constructor(private router: Router, private fb: FormBuilder, private connectBBDD: ConnectingToBbddService, private autentifiacioService: AutentificacioService) {
+  constructor(private router: Router, private fb: FormBuilder, private connectBBDD: ConnectingToBbddService, private autentificacioService: AutentificacioService) {
     this.contactForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.value = JSON.stringify(response);
           console.log(this.value)
           this.message = "Login successful";
-          this.autentifiacioService.usuariAutentificat();
+          this.autentificacioService.usuariAutentificat();
           localStorage.setItem('isAuthenticated', 'true');
           this.router.navigate(['/']);
         },

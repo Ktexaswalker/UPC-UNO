@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark z-1 front bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark z-4 front bg-dark sticky-top">
     <div class="container-fluid">
         <div class="d-flex justify-content-center pt-3">
             <svg class="ancho ms-4" viewBox="0 20 300 250" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +19,7 @@
                 </text>
             </svg>
         </div>
-        <button id="btn-rules" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button"  routerLink="rules">
+        <!-- <button id="btn-rules" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button"  routerLink="rules">
             Rules
         </button>
         <button id="btn-aboutus" class="btn btn-outline-success me-2 text-light mt-1 d-none d-md-block" type="button" routerLink="aboutus">
@@ -40,7 +40,30 @@
             <button id="btn-logout" class="btn btn-outline-success me-2 mt-1 d-none d-md-block" type="button" routerLink="logout">
                 Logout
             </button>
-        }
+        } -->
+        <div class="nav navbar-nav d-flex flex-row justify-content-center align-items-center" id="navbarNav">
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item px-3 py-2 mx-md-3 mx-lg-5 d-none d-sm-block border border-primary-subtle">
+                    <a class="nav-link text-white p-0" href="#home">Home</a>
+                </li>
+                <li class="nav-item px-3 py-2 mx-md-3 mx-lg-5 d-none d-sm-block border border-danger">
+                    <a class="nav-link text-white p-0" href="#rules">Rules</a>
+                </li>
+                <li class="nav-item px-3 py-2 mx-md-3 mx-lg-5 d-none d-sm-block border border-warning">
+                    <a class="nav-link text-white p-0" href="#team">Team</a>
+                </li>
+                @if(!logeado) {
+                    <li class="nav-item px-3 py-2 mx-md-3 mx-lg-5 d-none d-sm-block border border-success-subtle">
+                        <a class="nav-link text-white p-0" routerLink="login">Login</a>
+                    </li>
+                }
+                @if (logeado) {
+                    <li class="nav-item px-3 py-2 mx-md-3 mx-lg-5 d-none d-sm-block border border-success-subtle">
+                        <a class="nav-link text-white p-0" href="#login">Logout</a>
+                    </li>
+                }
+            </ul>
+        </div>
         <!-- boton ventana lateral -->
         <div class="text-center col-2 d-none d-md-block">
             <button class="nav-item btn btn-danger mt-1" type="button" 
@@ -53,7 +76,7 @@
         </div>
     </div>
     <div class="collapse navbar-collapse justify-content-around" id="navbarTogglerD3">
-        <ul class="navbar-nav me-5 ms-3 ps-3">
+        <!-- <ul class="navbar-nav me-5 ms-3 ps-3">
             <li class="navbar-item d-lg-none">
                 <span class="nav-link text-secondary h6">
                     <button id="btn-rules" class="btn btn-outline-warning me-2 text-secondary mt-1 d-md-none d-block" type="button" routerLink="rules">
@@ -99,7 +122,18 @@
                     </span>
                 </li>
             }
-        </ul>
+        </ul> -->
+        <ul class="navbar-nav me-5 ms-3 ps-3">
+            <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-primary-subtle"><a class="nav-link text-white p-0" href="#home">Home</a></li>
+            <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-danger"><a class="nav-link text-white p-0" href="#rules">Rules</a></li>
+            <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-warning"><a class="nav-link text-white p-0" href="#team">Team</a></li>
+            @if(!logeado) {
+            <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-success-subtle"><a class="nav-link text-white p-0" routerLink="login">Login</a></li>
+            }
+            @if (logeado) {
+              <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-success-subtle"><a class="nav-link text-white p-0" href="#login">Logout</a></li>
+            }
+          </ul>
     </div>
 </nav>
 

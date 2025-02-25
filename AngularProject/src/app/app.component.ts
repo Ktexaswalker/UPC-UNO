@@ -20,7 +20,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     TecnologiaComponent,
     AboutusComponent,
     ProgramersComponent,
-    LoginComponent,
+    // LoginComponent,
     TecnologiaComponent,
     FooterComponent
 ],
