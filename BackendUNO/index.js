@@ -35,45 +35,40 @@ const accessTokenSecret = 'youraccesstokensecret';
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+//CONSTANT MIDDLEWARE JWT
+const authenticateJWT = (req, res, next) => {
+
+    const authHeader = req.headers["authorization"];
+    //En la constante authHeader, el valor prové de:
+    // Authorization: Bearer <token> ( per exemple Postman)
+    console.log("wuirerioewurioep"+authHeader);
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+        jwt.verify(token, accessTokenSecret, (err, user) => {
+            if (err) {
+                console.log(err)
+                return res.sendStatus(403);
+            }
+  
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
+
 // Creació recurs /login
 app.post('/login', (req, res) => {
-
     // Ens connectem al servidor fent servir la cadena de conexió
     connection.connect((error) => {
-
         if (error) { //si hi ha error en la connexió            
             console.log("Error connecting: " + error.stack);
             return; //no continuï, surti del recurs /login
         }
-
         //si tot ok, pots voler saber l'id que tens de connexió (voluntari)
         console.log("Connectat amb la id" + connection.threadId);
-
     });
-
-    //CONSTANT MIDDLEWARE JWT
-    const authenticateJWT = (req, res, next) => {
-
-        const authHeader = req.headers["authorization"];
-        //En la constante authHeader, el valor prové de:
-        // Authorization: Bearer <token> ( per exemple Postman)
-        console.log("wuirerioewurioep"+authHeader);
-        if (authHeader) {
-            const token = authHeader.split(' ')[1];
-      
-            jwt.verify(token, accessTokenSecret, (err, user) => {
-                if (err) {
-                    console.log(err)
-                    return res.sendStatus(403);
-                }
-      
-                req.user = user;
-                next();
-            });
-        } else {
-            res.sendStatus(401);
-        }
-    };
 
     // Creació recurs /login
     const { username, password } = req.body;
@@ -101,6 +96,26 @@ app.post('/login', (req, res) => {
     );
 });
 
+
+app.get('/prova', authenticateJWT, (req, res)=> {
+    connection.query(
+        "SELECT * FROM users",
+        (error, results) => {
+            if (error) {
+                res.status(500).send({ error: true, message: "Error amb la consulta a la BBDD", dades: "" });
+            } else if (results.length > 0) {
+                // res.status(200).send({ error: false, message: "Inicio de sesion exitoso", dades: results[0] })
+                res.status(200).send({
+                    error: false,
+                    message: "Estem a la DDBB",
+                    dades: results,
+                });
+            } else {
+                res.status(404).send({ error: true, message: "No estem", dades: "" });
+            }
+        }
+    )
+});
 // Pasos manejar JWT:
 
 // Hago el login desde el Cliente ( Http )
