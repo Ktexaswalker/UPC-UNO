@@ -234,7 +234,7 @@ app.put('/actualitzar_torneo', (req, res) => {
 });
 
 //DELETE
-app.put('/actualitzar_torneo', (req, res) => {
+app.delete('/actualitzar_torneo', (req, res) => {
 
     const { id } = req.body;
 
