@@ -33,4 +33,7 @@ export class ConnectingToBbddService {
   register(credentials: { username: string; password: string }): Observable<any> {
     return this._http.post<any>(this.url + '/register', credentials);
   }
+
+  
+
 }
