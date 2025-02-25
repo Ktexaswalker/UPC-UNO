@@ -183,7 +183,7 @@ app.get('/torneos', (req, res) => {
 });
 
 //CREATE
-app.post('/torneos', (req, res) =>{
+app.post('/crear_torneo', (req, res) =>{
 
     connection.query(
         "SELECT * FROM torneos WHERE torneo = ?",
@@ -208,6 +208,55 @@ app.post('/torneos', (req, res) =>{
             );
         }
     );
+
+});
+
+//UPDATE
+//En aquest endpoint només es pot actualitzar el description
+app.put('/actualitzar_torneo', (req, res) => {
+    const { id, description } = req.body;
+
+    connection.query(
+        "UPDATE torneos SET description = ? WHERE id = ?",
+        [description, id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
+            }
+            if (results.length > 0) {
+                return res.status(200).send({ error: false, message: "Torneo actualitzat correctament" });
+            }
+            else {
+                return res.status(404).send({ error: true, message: "No hi ha torneos" });
+            }
+        }
+    );
+});
+
+//DELETE
+app.put('/actualitzar_torneo', (req, res) => {
+
+    const { id } = req.body;
+
+    connection.query(
+        "DELETE FROM torneos WHERE id = ?",
+        [id],
+        (error, results) => {
+
+            if (error) {
+                return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
+            }
+            if (results.length > 0) {
+                return res.status(200).send({ error: false, message: "Torneig eliminat correctament" });
+            }
+            else {
+                return res.status(404).send({ error: true, message: "No hi ha torneigs" });
+            }
+
+
+        }
+
+    )
 
 });
 
