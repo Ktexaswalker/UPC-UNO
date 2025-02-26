@@ -7,6 +7,10 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { HomeComponent } from './components/home/home.component';
 import { RulesComponent } from './components/rules/rules.component';
+import { provideRouter } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
+
+
 
 export const routes: Routes = [
   // {
@@ -46,3 +50,8 @@ export const routes: Routes = [
   //   component: LogoutComponent
   // },
 ];
+
+//Perque router outlet funcione
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
