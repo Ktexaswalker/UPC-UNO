@@ -30,10 +30,6 @@ export const routes: Routes = [
   //   component: AccessingToServiceComponent
   // },
   {
-    path: '**',
-    redirectTo: 'pagina404'
-  },
-  {
     path: 'login',
     component: LoginComponent
   },
@@ -41,6 +37,11 @@ export const routes: Routes = [
     path: 'register',
     component: RegistroComponent
   },
+  {
+    path: '**',
+    redirectTo: 'pagina404'
+  }
+
   // {
   //   path: 'admin',
   //   component: AdminComponent
@@ -52,6 +53,6 @@ export const routes: Routes = [
 ];
 
 //Perque router outlet funcione
-export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
-};
+// export const appConfig: ApplicationConfig = {
+//   providers: [provideRouter(routes)]
+// };

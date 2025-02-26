@@ -9,13 +9,12 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ProgramersComponent } from './components/programers/programers.component';
 import { TecnologiaComponent } from "./components/tecnologia/tecnologia.component";
 import { FooterComponent } from "./components/footer/footer.component";
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterLink,
     RouterOutlet,
     NavbarComponent,
     SliderComponent,
@@ -25,8 +24,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
     ProgramersComponent,
     // LoginComponent,
     TecnologiaComponent,
-    FooterComponent,
-    RouterModule
+    FooterComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -34,8 +32,12 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 export class AppComponent {
   logeado:boolean = false;
   
-    constructor(private autentificacioService: AutentificacioService) {}
+    constructor(private autentificacioService: AutentificacioService, private router: Router) {}
   
+    esPaginaLogin(): boolean {
+      return this.router.url === '/login';
+    }
+
     ngOnInit() {
       this.autentificacioService.usuariLoguejat.subscribe(
         (usuariLoguejat) => {
