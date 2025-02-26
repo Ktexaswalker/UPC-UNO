@@ -2,3 +2,35 @@
     width: 300px;
     height: 300px;
 }
+
+.fondo2 {
+    position: relative;
+    display: inline-block;
+  }
+  
+.fondo2::before {
+    content: "";
+    background: conic-gradient(
+        rgba(252,73,70,1) 5% 20deg,
+        rgba(71,166,237,1) 15% 70deg,
+        rgba(63,94,251,1) 25% 90deg,
+        rgba(242,252,70,1) 35% 100deg,
+        rgba(81,165,252,0.9) 45% 130deg,
+        rgba(58,13,219,1) 55% 160deg,
+        rgba(134,70,252,1) 65% 210deg,
+        rgba(70,252,82,1) 75% 25deg,
+        rgba(70,252,155,1) 85% 310deg,
+        rgba(251,252,70,1) 90% 300deg,
+        rgba(252,73,70,0.9) 100% 360deg);
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; 
+    z-index: 0; 
+}
+  
+.fondo2 img {
+    position: relative;
+    z-index: 1; 
+}

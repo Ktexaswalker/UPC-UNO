@@ -14,5 +14,6 @@ export class LogoutComponent {
 
   onSubmit() {
     this.autentifiacioService.logout();
+    localStorage.setItem('isAuthenticated', "false");
   }
 }

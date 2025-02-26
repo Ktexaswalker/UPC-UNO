@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit(){
-    // if (localStorage.getItem('isAuthenticated') === 'true') {
-    //   this.router.navigate(['/login']);
-    // }
+    if (localStorage.getItem('isAuthenticated') === 'true') {
+      this.router.navigate(['/login']);
+    }
   }
   
   onSubmit() {
