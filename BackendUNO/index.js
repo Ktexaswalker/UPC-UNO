@@ -216,7 +216,7 @@ app.post('/crear_torneo', authenticateJWT, (req, res) =>{
 
 //UPDATE
 //En aquest endpoint només es pot actualitzar el description
-app.put('/actualitzar_torneo', (req, res) => {
+app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
     const { id, description } = req.body;
 
     connection.query(
@@ -237,7 +237,7 @@ app.put('/actualitzar_torneo', (req, res) => {
 });
 
 //DELETE
-app.delete('/borrar_torneo', (req, res) => {
+app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
 
     const { id } = req.body;
 

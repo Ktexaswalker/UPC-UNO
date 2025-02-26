@@ -4,6 +4,21 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 
+//
+//
+//
+//          PENDIENTE A MODIFICAR:
+//
+//
+//          EN TODOS LOS MÉTODOS DEL CRUD DE TORNEOS, SE RECOGE EL TOKEN EN LOCALSTORAGE
+//
+//          TEORICAMENTE NO ES NECESESARIO
+//          YA QUE EL INTERCEPTOR YA LO ESTÁ HACIENDO	AUTOMÁTICAMENTE
+//
+//
+//
+//
+
 @Injectable({
   providedIn: 'root'
 })
