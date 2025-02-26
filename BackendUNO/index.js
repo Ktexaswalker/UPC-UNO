@@ -195,10 +195,13 @@ app.post('/crear_torneo', authenticateJWT, (req, res) =>{
             if (results.length > 0) {
                 return res.status(400).send({ error: true, message: "Torneo ja registrat" });
             }
+
+            const { torneo , description } = req.body;
+
             // Inserim el nou torneo
             connection.query(
                 "INSERT INTO torneos (torneo, description) VALUES (?, ?)",
-                [torneo, password],
+                [torneo, description],
                 (error, results) => {
                     if (error) {
                         return res.status(500).send({ error: true, message: "Error al registrar el torneig" });
