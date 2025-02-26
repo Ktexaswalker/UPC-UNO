@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -33,6 +33,20 @@ export class ConnectingToBbddService {
   register(credentials: { username: string; password: string }): Observable<any> {
     return this._http.post<any>(this.url + '/register', credentials);
   }
+
+  getTorneos(): Observable<any> {
+
+    const token = localStorage.getItem('accessToken');
+
+    const headers = new HttpHeaders({
+     'Authorization': `Bearer ${token}`
+  });
+
+    return this._http.get<any>(this.url + '/torneos', { headers });
+  }
+  
+
+
 
   
 

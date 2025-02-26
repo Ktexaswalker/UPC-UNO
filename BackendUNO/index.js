@@ -161,7 +161,7 @@ app.post('/register', (req, res) => {
 //Endpoints CRUD Torneo
 
 //READ
-app.get('/torneos', (req, res) => {
+app.get('/torneos', authenticateJWT, (req, res) => {
 
     connection.query(
         "SELECT * FROM torneos",
