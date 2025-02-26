@@ -60,6 +60,30 @@ export class ConnectingToBbddService {
   }
 
 
+  actualitzar_torneo(credentials: { id: number; description: string }): Observable<any> {
+
+    const token = localStorage.getItem('accessToken');
+
+    const headers = new HttpHeaders({
+     'Authorization':`Bearer ${token}`
+  });
+
+    return this._http.post<any>(this.url + '/actualitzar_torneo', credentials, { headers });
+  }
+
+  esborrar_torneo(credentials: { id: number }): Observable<any> {
+
+    const token = localStorage.getItem('accessToken');
+
+    const headers = new HttpHeaders({
+     'Authorization':`Bearer ${token}`
+  });
+
+    return this._http.post<any>(this.url + '/borrar_torneo', credentials, { headers });
+    
+  }
+
+
 
   
 
