@@ -1,15 +1,16 @@
 <!-- <app-serveis class="collapse" id="servei" href="servei"></app-serveis> -->
-
 <app-navbar></app-navbar>
-
-@if (!esPaginaLogin()) {
-<app-slider></app-slider>
-<app-rules></app-rules>
-<app-tecnologia></app-tecnologia>
-<app-aboutus></app-aboutus>
-<app-programers></app-programers>
-<!-- <app-login></app-login> -->
-<app-footer></app-footer>
+@if (esPagina("/login")) {
+    <router-outlet></router-outlet>
+    <!-- <app-login></app-login> -->
+} @else if (esPagina('/register')) {
+    <router-outlet></router-outlet>
+    <!-- <app-registro></app-registro> -->
+} @else {
+    <app-slider></app-slider>
+    <app-rules></app-rules>
+    <app-tecnologia></app-tecnologia>
+    <app-aboutus></app-aboutus>
+    <app-programers></app-programers>
 }
-
-<router-outlet></router-outlet>
+<app-footer></app-footer>

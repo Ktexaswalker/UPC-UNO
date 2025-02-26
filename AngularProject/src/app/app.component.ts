@@ -22,7 +22,6 @@ import { RouterOutlet, Router } from '@angular/router';
     TecnologiaComponent,
     AboutusComponent,
     ProgramersComponent,
-    // LoginComponent,
     TecnologiaComponent,
     FooterComponent
 ],
@@ -34,8 +33,9 @@ export class AppComponent {
   
     constructor(private autentificacioService: AutentificacioService, private router: Router) {}
   
-    esPaginaLogin(): boolean {
-      return this.router.url === '/login';
+    esPagina(c:string): boolean {
+      // let c:string = '/login';
+      return this.router.url === c;
     }
 
     ngOnInit() {
