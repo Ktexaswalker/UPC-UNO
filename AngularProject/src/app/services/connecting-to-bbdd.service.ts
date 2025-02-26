@@ -30,6 +30,9 @@ export class ConnectingToBbddService {
   
   }
 
+  //Perquè es posa <any> a post i al Observable?
+  //Per que el tipus de dades que s'espera que arribi, no està definit en el moment.
+  // Es una forma de dir que qualsevol tipus de dades es vàlid per la resposta
   register(credentials: { username: string; password: string }): Observable<any> {
     return this._http.post<any>(this.url + '/register', credentials);
   }
@@ -45,6 +48,16 @@ export class ConnectingToBbddService {
     return this._http.get<any>(this.url + '/torneos', { headers });
   }
   
+  crear_torneo(credentials: { torneo: string; description: string }): Observable<any> {
+
+    const token = localStorage.getItem('accessToken');
+
+    const headers = new HttpHeaders({
+     'Authorization':`Bearer ${token}`
+  });
+
+    return this._http.post<any>(this.url + '/crear_torneo', credentials, { headers });
+  }
 
 
 

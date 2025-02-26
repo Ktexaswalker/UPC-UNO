@@ -183,7 +183,7 @@ app.get('/torneos', authenticateJWT, (req, res) => {
 });
 
 //CREATE
-app.post('/crear_torneo', (req, res) =>{
+app.post('/crear_torneo', authenticateJWT, (req, res) =>{
 
     connection.query(
         "SELECT * FROM torneos WHERE torneo = ?",
