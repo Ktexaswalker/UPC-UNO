@@ -39,7 +39,7 @@ export class ConnectingToBbddService {
     const token = localStorage.getItem('accessToken');
 
     const headers = new HttpHeaders({
-     'Authorization': `Bearer ${token}`
+     'Authorization':`Bearer ${token}`
   });
 
     return this._http.get<any>(this.url + '/torneos', { headers });
