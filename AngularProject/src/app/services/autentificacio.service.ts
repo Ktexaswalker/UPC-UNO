@@ -16,10 +16,14 @@ export class AutentificacioService {
       localStorage.setItem('isAuthenticated', 'true');
 
     }
-  
+    
+    //EL localStorage.clear()
+    //Es per esborrar totes les localStorages, inclosa la del accessToken
+
     logout() {
       this.autentificat.next(false);
       localStorage.removeItem('isAuthenticated');
+      localStorage.clear();
       this.router.navigate(['/login']);
     }
 }
