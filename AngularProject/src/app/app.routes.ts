@@ -42,6 +42,10 @@ export const routes: Routes = [
     redirectTo: 'pagina404'
   }
 
+  //Ejemplo ruta con Guard:
+  // {path: 'formTemplate', component: FormComponent,canActivate: [AuthGuard]},
+
+
   // {
   //   path: 'admin',
   //   component: AdminComponent
