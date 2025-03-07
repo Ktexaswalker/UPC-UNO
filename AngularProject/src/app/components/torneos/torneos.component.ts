@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ConnectingToBbddService } from '../../services/connecting-to-bbdd.service';
 import { AddTorneoComponent } from '../add-torneo/add-torneo.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-torneos',
