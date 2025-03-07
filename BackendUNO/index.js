@@ -239,11 +239,11 @@ app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
 //DELETE
 app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
 
-    const { id } = req.body;
+    const { torneo } = req.body;
 
     connection.query(
-        "DELETE FROM torneos WHERE id = ?",
-        [id],
+        "DELETE FROM torneos WHERE torneo = ?",
+        [torneo],
         (error, results) => {
 
             if (error) {
