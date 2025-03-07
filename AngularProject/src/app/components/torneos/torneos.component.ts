@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConnectingToBbddService } from '../../services/connecting-to-bbdd.service';
 
 @Component({
   selector: 'app-torneos',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './torneos.component.css'
 })
 export class TorneosComponent {
+
+
   
 }

@@ -54,13 +54,7 @@ export class ConnectingToBbddService {
 
   getTorneos(): Observable<any> {
 
-    const token = localStorage.getItem('accessToken');
-
-    const headers = new HttpHeaders({
-     'Authorization':`Bearer ${token}`
-  });
-
-    return this._http.get<any>(this.url + '/torneos', { headers });
+    return this._http.get<any>(this.url + '/torneos');
   }
   
   crear_torneo(credentials: { torneo: string; description: string }): Observable<any> {
