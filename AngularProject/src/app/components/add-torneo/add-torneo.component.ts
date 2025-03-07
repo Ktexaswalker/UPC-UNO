@@ -16,7 +16,7 @@ export class AddTorneoComponent  {
   @Input() torneo_name: string = '';
   
   formulari: FormGroup = new FormGroup({});
-  cloth: any;
+  torneo_obj: any;
 
   torneo: string = '';
   description: string = '';
@@ -46,7 +46,7 @@ export class AddTorneoComponent  {
     this.conectarBD.findTorneobyName(torneo).subscribe({
       next: (response) => {
         console.log(response);
-        this.cloth = response.clothes;
+        this.torneo_obj = response.torneo_obj;
         this.ferform();
       },
       error: (error) => {
@@ -61,8 +61,8 @@ export class AddTorneoComponent  {
   ferform(){
 
     this.formulari.setValue({
-      torneo: this.cloth.brand,
-      description: this.cloth.clothtype
+      torneo: this.torneo_obj.torneo,
+      description: this.torneo_obj.description
 
     });
 

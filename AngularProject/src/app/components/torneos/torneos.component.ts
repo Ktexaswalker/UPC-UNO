@@ -30,7 +30,7 @@ export class TorneosComponent {
         console.log(this.torneos);
       },
       error: (error) => {
-        console.error('Error al obtenir clothes:', error);
+        console.error('Error al obtenir torneos:', error);
       },
       complete: () => console.info('Els tornejos han sigut obtinguts')
     });
@@ -46,7 +46,7 @@ export class TorneosComponent {
       console.log(this.torneos);
     },
     error: (error) => {
-      console.error('Error al obtenir clothes:', error);
+      console.error('Error al obtenir torneos:', error);
     },
     complete: () =>     this.getTorneos()
 
