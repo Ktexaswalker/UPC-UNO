@@ -37,19 +37,39 @@
     </div>
 </div>
 
-@if(torneos.length === 0) {
-
-        
-    <p>No hay torneos disponibles</p>
-
-}
-else{
-
-    {{ torneo.torneo }}
-    {{ torneo.description }}
-
-
-}
-
+<!-- AFEGIT PER PAU -->
+<div class="container">
+    <h2 class="mb-4 text-center">Lista de Torneos</h2>
+    
+    @if(torneos.length === 0) {
+        <p>No hay torneos disponibles</p>
+    } @else {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(torneo of torneos; track torneo) {
+                        <tr>
+                            <td>{{ torneo.torneo }}</td>
+                            <td>{{ torneo.description }}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">Ver</button>
+                                <button class="btn btn-warning btn-sm" (click)="editarTorneo(torneo.torneo)">Editar</button>
+                                <button class="btn btn-danger btn-sm" (click)="eliminarTorneo(torneo.torneo)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
   
  

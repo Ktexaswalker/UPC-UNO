@@ -10,7 +10,7 @@ import { RulesComponent } from './components/rules/rules.component';
 import { provideRouter } from '@angular/router';
 import { ApplicationConfig } from '@angular/core';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-
+import { TorneosComponent } from './components/torneos/torneos.component';
 
 
 export const routes: Routes = [
@@ -42,6 +42,12 @@ export const routes: Routes = [
     path: '**',
     // redirectTo: 'pagina404',
     component: NotfoundComponent
+  },
+
+  {
+    path: 'torneos',
+    component: TorneosComponent
+
   }
 
   //Ejemplo ruta con Guard:

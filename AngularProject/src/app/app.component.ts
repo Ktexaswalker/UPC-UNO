@@ -10,6 +10,7 @@ import { ProgramersComponent } from './components/programers/programers.componen
 import { TecnologiaComponent } from "./components/tecnologia/tecnologia.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { RouterOutlet, Router } from '@angular/router';
+import { TorneosComponent } from './components/torneos/torneos.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { RouterOutlet, Router } from '@angular/router';
     AboutusComponent,
     ProgramersComponent,
     TecnologiaComponent,
-    FooterComponent
+    FooterComponent,
+    TorneosComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
