@@ -10,6 +10,23 @@ import { ConnectingToBbddService } from '../../services/connecting-to-bbdd.servi
 })
 export class TorneosComponent {
 
+  torneos: any[] = [];
+
+ constructor(private _connectingToBbddService: ConnectingToBbddService) {
+
+    this.getTorneos();
+
+  }
+
+  getTorneos() {
+
+    this._connectingToBbddService.getTorneos().subscribe((response: any) => {
+      this.torneos = response;
+      
+    });
+   
+ }
+
 
   
 }
