@@ -11,6 +11,7 @@ import { TecnologiaComponent } from "./components/tecnologia/tecnologia.componen
 import { FooterComponent } from "./components/footer/footer.component";
 import { RouterOutlet, Router } from '@angular/router';
 import { TorneosComponent } from './components/torneos/torneos.component';
+import { AddTorneoComponent } from './components/add-torneo/add-torneo.component';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ import { TorneosComponent } from './components/torneos/torneos.component';
     ProgramersComponent,
     TecnologiaComponent,
     FooterComponent,
-    TorneosComponent
+    TorneosComponent,
+    AddTorneoComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

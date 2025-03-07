@@ -1,0 +1,24 @@
+<div>
+    <p>Torneo a modificar: {{ torneo_name }}</p>
+
+    <form [formGroup]="formulari" (ngSubmit)="onSubmit()">
+
+
+        <div>
+
+
+
+   <label for="brand">Description:</label>
+          <input id="description" type="text" formControlName="description">
+        </div>
+  
+      
+        <button type="submit" [disabled]="!formulari.valid">Actualitzar torneo</button> 
+      </form>
+
+
+
+      
+    
+  </div>
+

@@ -69,7 +69,7 @@ export class ConnectingToBbddService {
   }
 
 
-  actualitzar_torneo(credentials: { id: number; description: string }): Observable<any> {
+  actualitzar_torneo(torneo: string, description: string ): Observable<any> {
 
   //   const token = localStorage.getItem('accessToken');
 
@@ -77,7 +77,7 @@ export class ConnectingToBbddService {
   //    'Authorization':`Bearer ${token}`
   // });
 
-    return this._http.post<any>(this.url + '/actualitzar_torneo', credentials);
+    return this._http.post<any>(this.url + '/actualitzar_torneo', ({torneo, description}));
   }
 
   esborrar_torneo(credentials: { torneo: string }): Observable<any> {
@@ -90,6 +90,13 @@ export class ConnectingToBbddService {
 
     return this._http.post<any>(this.url + '/borrar_torneo', credentials);
     
+  }
+
+  findTorneobyName(torneo: string): Observable<any> { 
+
+    return this._http.get<any>(this.url + '/torneo_per_nom/' + torneo);
+
+
   }
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConnectingToBbddService } from '../../services/connecting-to-bbdd.service';
+import { AddTorneoComponent } from '../add-torneo/add-torneo.component';
 
 @Component({
   selector: 'app-torneos',
@@ -12,6 +13,8 @@ export class TorneosComponent {
 
   torneos: any[] = [];
   torneo: string = '';
+  torneo_name: string = '';
+  
 
  constructor(private _connectingToBbddService: ConnectingToBbddService) {
 
@@ -21,19 +24,31 @@ export class TorneosComponent {
 
   getTorneos() {
 
-    this._connectingToBbddService.getTorneos().subscribe((response: any) => {
-      this.torneos = response;
-
+    this._connectingToBbddService.getTorneos().subscribe({
+      next: (response) => {
+        this.torneos = response.torneos;
+        console.log(this.torneos);
+      },
+      error: (error) => {
+        console.error('Error al obtenir clothes:', error);
+      },
+      complete: () => console.info('Els tornejos han sigut obtinguts')
     });
    
  }
 
  eliminarTorneo(torneo: string){
 
-  alert(torneo);
 
-  this._connectingToBbddService.esborrar_torneo({ torneo: torneo }).subscribe((response: any) => {
-    this.getTorneos();
+  this._connectingToBbddService.esborrar_torneo({ torneo: torneo }).subscribe({
+    next: (response) => {
+      this.torneos = response.torneos;
+      console.log(this.torneos);
+    },
+    error: (error) => {
+      console.error('Error al obtenir clothes:', error);
+    },
+    complete: () =>     this.getTorneos()
 
   });
 
@@ -43,6 +58,9 @@ export class TorneosComponent {
  editarTorneo(torneo: string){
 
   alert(torneo);
+  this.torneo_name = torneo;
+  //falta  redirigir a add-torneo
+  //  this.router.navigate(['/add-torneo']);
 
 
  }

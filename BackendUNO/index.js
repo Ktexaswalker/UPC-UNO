@@ -214,14 +214,41 @@ app.post('/crear_torneo', authenticateJWT, (req, res) =>{
 
 });
 
+app.get('/torneo_per_nom/:name', (req, res) => {
+
+    const id = req.params.id;
+
+    connection.query(
+        "SELECT * FROM torneos WHERE name = ?",
+        [id],
+        (error, results) => {
+
+            if (error) {
+                return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
+            }
+            if (results.length > 0) {
+                return res.status(200).send({ error: false, message: "Torneo trobat correctament", clothes: results[0] });
+            }
+            else {
+                return res.status(404).send({ error: true, message: "El torneo no existeix" });
+            }
+
+
+        }
+
+    )
+
+});
+
+
 //UPDATE
 //En aquest endpoint només es pot actualitzar el description
 app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
-    const { id, description } = req.body;
+    const { torneo, description } = req.body;
 
     connection.query(
-        "UPDATE torneos SET description = ? WHERE id = ?",
-        [description, id],
+        "UPDATE torneos SET description = ? WHERE torneo = ?",
+        [description, torneo],
         (error, results) => {
             if (error) {
                 return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });

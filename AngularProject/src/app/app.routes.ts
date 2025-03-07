@@ -11,7 +11,7 @@ import { provideRouter } from '@angular/router';
 import { ApplicationConfig } from '@angular/core';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { TorneosComponent } from './components/torneos/torneos.component';
-
+import { AddTorneoComponent } from './components/add-torneo/add-torneo.component';
 
 export const routes: Routes = [
   // {
@@ -48,7 +48,14 @@ export const routes: Routes = [
     path: 'torneos',
     component: TorneosComponent
 
-  }
+  },
+
+  {
+    path: 'add-torneo',
+    component: AddTorneoComponent
+
+  },
+
 
   //Ejemplo ruta con Guard:
   // {path: 'formTemplate', component: FormComponent,canActivate: [AuthGuard]},
