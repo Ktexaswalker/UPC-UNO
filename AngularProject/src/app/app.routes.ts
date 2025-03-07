@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RulesComponent } from './components/rules/rules.component';
 import { provideRouter } from '@angular/router';
 import { ApplicationConfig } from '@angular/core';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 
 
@@ -39,7 +40,8 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'pagina404'
+    // redirectTo: 'pagina404',
+    component: NotfoundComponent
   }
 
   //Ejemplo ruta con Guard:
