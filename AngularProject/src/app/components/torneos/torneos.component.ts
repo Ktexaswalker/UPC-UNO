@@ -62,11 +62,11 @@ export class TorneosComponent {
     //falta  redirigir a add-torneo
     //  this.router.navigate(['/add-torneo']);
 
-  }
 
-  onDataChange(event: any) {
-    console.log('Datos recibidos del hijo:', event);
-    this.torneoSeleccionado = null; // Ocultar el formulario después de guardar
-  }
+ }
 
+
+
+
+  
 }
