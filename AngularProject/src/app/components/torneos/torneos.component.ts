@@ -2,18 +2,24 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ConnectingToBbddService } from '../../services/connecting-to-bbdd.service';
 import { AddTorneoComponent } from '../add-torneo/add-torneo.component';
 import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-torneos',
   standalone: true,
-  imports: [AddTorneoComponent],
+  imports: [
+    AddTorneoComponent,
+    NgxPaginationModule
+  ],
   templateUrl: './torneos.component.html',
   styleUrl: './torneos.component.css'
 })
 export class TorneosComponent {
-
+  items: any[] = [];
+  page: number = 1;
+  pageSize:number = 5;
   torneos: any[] = [];
-  torneo: string = '';
+  // torneo: string = '';
   torneo_name: string = '';
   torneoSeleccionado: any = null;
   @Input() addTorneo: any;
@@ -21,7 +27,7 @@ export class TorneosComponent {
 
 
  constructor(private _connectingToBbddService: ConnectingToBbddService) {
-    this.getTorneos();
+    this.torneos.push(this.getTorneos());
   }
 
   getTorneos() {

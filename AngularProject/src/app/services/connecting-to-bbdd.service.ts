@@ -42,7 +42,10 @@ export class ConnectingToBbddService {
         }
       })
     );
-  
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
   //Perquè es posa <any> a post i al Observable?

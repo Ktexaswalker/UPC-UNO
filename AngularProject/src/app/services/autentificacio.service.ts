@@ -15,6 +15,7 @@ export class AutentificacioService {
       // Regresa `true` si el token existe
       return localStorage.getItem('isAuthenticated') === 'true';
     }
+    
     usuariAutentificat() {
       this.autentificat.next(true);
       localStorage.setItem('isAuthenticated', 'true');

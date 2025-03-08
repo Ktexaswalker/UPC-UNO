@@ -1,4 +1,4 @@
-
+<div class="pt-5 invisible z-2" id="torneos"></div>
 <div class="container">
     <h2 class="mb-4 text-center">Lista de Torneos</h2>
     <div class="table-responsive">
@@ -16,7 +16,7 @@
                 @if(torneos.length === 0) {
                     <td colspan="4">No hay torneos disponibles</td>
                 } @else {
-                    @for(torneo of torneos; track torneo.id) {
+                    @for(torneo of torneos | paginate:{ itemsPerPage: pageSize, currentPage: page }; track torneo ) {
                         <tr>
                             <td>{{ torneo.id }}</td>
                             <td>{{ torneo.torneo }}</td>
@@ -27,14 +27,17 @@
                                 <button class="btn btn-danger btn-sm" (click)="eliminarTorneo(torneo)">Eliminar</button>
                             </td>
                         </tr>
-                    }
+                    }   
                 }
             </tbody>
         </table>
+        <div class="d-flex justify-content-center">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
     </div>
 </div>
 <!-- @if (torneoSeleccionado) {
-    <app-add-torneo [dataFill]="torneoSeleccionado" (dataToParent)="onDataChange($event)"></app-add-torneo>
+    <app-add-torneo [torneo_name]="torneoSeleccionado" (dataToParent)="onDataChange($event)"></app-add-torneo>
 } -->
 
  

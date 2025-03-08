@@ -14,10 +14,9 @@ import { Router } from '@angular/router';
 export class AddTorneoComponent  {
 
   @Input() torneo_name: string = '';
-  
+
   formulari: FormGroup = new FormGroup({});
   torneo_obj: any;
-
   torneo: string = '';
   description: string = '';
 
@@ -27,7 +26,7 @@ export class AddTorneoComponent  {
   }
 
   ngOnInit(): void {
-
+    console.log("AQUI EL TORNEO_NAME: "+this.torneo_name);
     this.getTorneoServei(this.torneo_name);
 
     this.formulari = this.formB.group({

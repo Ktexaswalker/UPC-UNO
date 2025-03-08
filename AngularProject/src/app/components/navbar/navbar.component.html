@@ -127,14 +127,14 @@
             }
         </ul> -->
         <ul class="navbar-nav me-5 ms-3 ps-3">
-            <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-primary-subtle"><a class="nav-link text-white p-0" href="#home">Home</a></li>
+            <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-primary-subtle"><a class="nav-link text-white p-0"  href="/">Home</a></li>
             <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-danger"><a class="nav-link text-white p-0" href="#rules">Rules</a></li>
             <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-warning"><a class="nav-link text-white p-0" href="#team">Team</a></li>
             @if(!logeado) {
             <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-success-subtle"><a class="nav-link text-white p-0" routerLink="login">Login</a></li>
             }
             @if (logeado) {
-              <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-success-subtle"><a class="nav-link text-white p-0" href="#login">Logout</a></li>
+              <li class="nav-item d-lg-none px-3 py-2 mx-5 border border-success-subtle"><a class="nav-link text-white p-0" (click)="logout()" routerLink="logout">Logout</a></li>
             }
           </ul>
     </div>
@@ -148,9 +148,9 @@
     </div>
     <div class="offcanvas-body bg-light">
         <p><a href="#rules">Reglas del juego</a></p>
-        <p><a href="#">Score sheet</a></p>
-        <p><a href="#">Equipo</a></p>
-        <p><a href="#">Formulario de inscripcción</a></p>
+        <p><a href="#torneos">Score sheet</a></p>
+        <p><a href="#team">Equipo</a></p>
+        <p><a routerLink="register">Formulario de inscripcción</a></p>
         <!-- reglas del juego (mirar de hacer una card ancha)-->
         <!-- score sheet -->
         <!-- equipo (cards object-fit) -->
