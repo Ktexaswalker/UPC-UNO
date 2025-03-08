@@ -168,13 +168,11 @@ app.get('/torneos', authenticateJWT, (req, res) => {
         (error, results) => {
             if (error) {
                 res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
-            }
-            if (results.length > 0) {
+            } else if (results.length > 0) {
                 res.status(200).send({ error: false, message: "Torneos obtinguts correctament",
                     torneos: results
                  });
-            }
-            else {
+            } else {
                 res.status(404).send({ error: true, message: "No hi ha torneos" });
             }
         }
@@ -214,26 +212,24 @@ app.post('/crear_torneo', authenticateJWT, (req, res) =>{
 
 });
 
-app.get('/torneo_per_nom/:name', (req, res) => {
+app.get('/torneo_per_nom/:torneo', (req, res) => {
 
-    const id = req.params.id;
+    const torneo = req.params.torneo;
 
     connection.query(
-        "SELECT * FROM torneos WHERE name = ?",
-        [id],
+        "SELECT * FROM torneos WHERE torneo = ?",
+        [torneo],
         (error, results) => {
 
             if (error) {
                 return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
             }
-            if (results.length > 0) {
+            else if (results.length > 0) {
                 return res.status(200).send({ error: false, message: "Torneo trobat correctament", torneo_obj: results[0] });
             }
             else {
                 return res.status(404).send({ error: true, message: "El torneo no existeix" });
             }
-
-
         }
 
     )

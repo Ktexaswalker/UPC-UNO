@@ -11,6 +11,7 @@ export class NotfoundComponent {
   private background!: HTMLElement;
   private intervalId!: number;
   private intervalUNO!: number;
+  private coc:number = 4;
   logo: string = "404";
   constructor(private renderer: Renderer2) {}
 
@@ -21,11 +22,15 @@ export class NotfoundComponent {
     this.intervalId = window.setInterval(() => this.createAnimatedElement(), 600);
     this.intervalUNO = window.setInterval(() => {
       this.logo = this.logo === '404' ? 'NOT' : 'FOUND';
+      this.coc = this.coc == 4 ? 0 : 4;
     }, 2000);
+    this.intervalUNO = window.setInterval(()=> {
+      this.logo = '404';
+    }, 6000)
   }
 
-  private createAnimatedElement(): void {
-    const number: number = Math.floor(Math.random() * 10);
+  private createAnimatedElement(): void {   
+    const number:number = this.coc;
     const choice: number = Math.floor(Math.random() * 4);
     const scale: number = (Math.random() * 0.4) + 0.1;
 

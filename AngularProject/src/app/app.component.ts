@@ -9,9 +9,13 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ProgramersComponent } from './components/programers/programers.component';
 import { TecnologiaComponent } from "./components/tecnologia/tecnologia.component";
 import { FooterComponent } from "./components/footer/footer.component";
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { TorneosComponent } from './components/torneos/torneos.component';
 import { AddTorneoComponent } from './components/add-torneo/add-torneo.component';
+import { NotfoundComponent } from "./components/notfound/notfound.component";
+import { Observable } from 'rxjs';
+import { HomeComponent } from './components/home/home.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,31 +31,46 @@ import { AddTorneoComponent } from './components/add-torneo/add-torneo.component
     TecnologiaComponent,
     FooterComponent,
     TorneosComponent,
-    AddTorneoComponent
+    AddTorneoComponent,
+    NotfoundComponent,
+    HomeComponent,
+    NgClass
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   logeado:boolean = false;
-  
-    constructor(private autentificacioService: AutentificacioService, private router: Router) {}
-  
-    esPagina(c:string): boolean {
-      // let c:string = '/login';
-      return this.router.url === c;
-    }
+  isFixed:boolean = false;
 
-    ngOnInit() {
-      this.autentificacioService.usuariLoguejat.subscribe(
-        (usuariLoguejat) => {
-          this.logeado = usuariLoguejat;
-        }
-      );
-    }
+  constructor(private autentificacioService: AutentificacioService, private router: Router) {
+  }
+
+  getCurrentUrl():string {
+    return this.router.url;
+  }
   
-    logout() {
-      this.autentificacioService.logout();
+  esPagina(c:string[]): boolean {
+    const rutasSet = new Set(c);
+    if (rutasSet.has("/upc") || rutasSet.has('/login') || rutasSet.has('/register')) {
+      this.isFixed = true;
+    } else {
+      this.isFixed = false;
     }
+    return rutasSet.has(this.getCurrentUrl());
+
+  }
+
+  ngOnInit() {
+    this.autentificacioService.usuariLoguejat.subscribe(
+      (usuariLoguejat) => {
+        this.logeado = usuariLoguejat;
+      }
+    );
+  }
+
+  logout() {
+    this.autentificacioService.logout();
+  }
 
 }

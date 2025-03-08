@@ -39,21 +39,22 @@ export const routes: Routes = [
     component: RegistroComponent
   },
   {
-    path: '**',
-    // redirectTo: 'pagina404',
-    component: NotfoundComponent
-  },
-
-  {
     path: 'torneos',
     component: TorneosComponent
 
   },
-
   {
     path: 'add-torneo',
     component: AddTorneoComponent
-
+  },
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: '**',
+    // redirectTo: 'pagina404',
+    component: NotfoundComponent
   },
 
 

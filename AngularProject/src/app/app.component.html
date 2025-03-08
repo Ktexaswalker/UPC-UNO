@@ -1,12 +1,14 @@
 <!-- <app-serveis class="collapse" id="servei" href="servei"></app-serveis> -->
 <app-navbar></app-navbar>
-@if (esPagina("/login")) {
+@if (esPagina(["/login"])) {
     <router-outlet></router-outlet>
     <!-- <app-login></app-login> -->
-} @else if (esPagina('/register')) {
+} @else if (esPagina(['/register'])) {
     <router-outlet></router-outlet>
     <!-- <app-registro></app-registro> -->
-} @else {
+} @else if (esPagina(['/upc'])) {
+    <app-home></app-home>
+} @else if (esPagina(['/', '/#rules', '/#team'])) {
     <app-slider></app-slider>
     <app-rules></app-rules>
     <app-tecnologia></app-tecnologia>
@@ -14,5 +16,7 @@
     <app-programers></app-programers>
     <app-torneos></app-torneos>
     <app-add-torneo></app-add-torneo>
+} @else {
+    <app-notfound></app-notfound>
 }
-<app-footer></app-footer>
+<app-footer [ngClass]="isFixed ? 'fixed-bottom' : ''"></app-footer>

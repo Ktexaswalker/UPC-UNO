@@ -21,13 +21,9 @@ export class AddTorneoComponent  {
   torneo: string = '';
   description: string = '';
 
-  
-
-
 
   constructor(private conectarBD: ConnectingToBbddService, private formB: FormBuilder, private router : Router ){
 
-   
   }
 
   ngOnInit(): void {
@@ -42,7 +38,6 @@ export class AddTorneoComponent  {
   }
 
   getTorneoServei(torneo: string) {
-
     this.conectarBD.findTorneobyName(torneo).subscribe({
       next: (response) => {
         console.log(response);
@@ -59,25 +54,16 @@ export class AddTorneoComponent  {
   }
 
   ferform(){
-
     this.formulari.setValue({
       torneo: this.torneo_obj.torneo,
       description: this.torneo_obj.description
-
     });
-
-
   }
 
   onSubmit() {
-
-
     if (this.formulari.valid) {
-
-
       this.torneo = this.formulari.value.torneo;
       this.description = this.formulari.value.description;
-
       this.conectarBD.actualitzar_torneo(this.torneo, this.description).subscribe({
         next: (response) => {
           console.log(response);
@@ -86,15 +72,7 @@ export class AddTorneoComponent  {
           console.error('Error al actualitzar el torneo:', error);
         },
         complete: () => this.router.navigate(['/torneos']) 
-        
-        
-
       });
-
-
     }
-
-}
-
-
+  }
 }
