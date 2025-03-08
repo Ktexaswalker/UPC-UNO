@@ -6,6 +6,9 @@
 } @else if (esPagina(['/register'])) {
     <router-outlet></router-outlet>
     <!-- <app-registro></app-registro> -->
+} @else if (esPagina(['/torneos'])) {
+    <router-outlet></router-outlet>
+    <app-add-torneo></app-add-torneo>
 } @else if (esPagina(['/upc'])) {
     <app-home></app-home>
 } @else if (esPagina(['/', '/#rules', '/#team', '/logout'])) {
@@ -14,8 +17,6 @@
     <app-tecnologia></app-tecnologia>
     <app-aboutus></app-aboutus>
     <app-programers></app-programers>
-    <app-torneos></app-torneos>
-    <app-add-torneo></app-add-torneo>
 } @else {
     <app-notfound></app-notfound>
 }

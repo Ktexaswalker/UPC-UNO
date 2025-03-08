@@ -52,7 +52,7 @@ export class AppComponent {
   
   esPagina(c:string[]): boolean {
     const rutasSet = new Set(c);
-    if (rutasSet.has("/upc") || rutasSet.has('/login') || rutasSet.has('/register')) {
+    if (rutasSet.has("/upc") || rutasSet.has('/login') || rutasSet.has('/register') || rutasSet.has('/torneos')) {
       this.isFixed = true;
     } else {
       this.isFixed = false;
