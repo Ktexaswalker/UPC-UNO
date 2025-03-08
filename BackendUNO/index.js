@@ -47,14 +47,13 @@ const authenticateJWT = (req, res, next) => {
         jwt.verify(token, accessTokenSecret, (err, user) => {
             if (err) {
                 console.log(err)
-                return res.sendStatus(403);
+                return res.sendStatus(403);     //Token no valido
             }
-  
             req.user = user;
-            next();
+            next(); //token correcto
         });
     } else {
-        res.sendStatus(401);
+        res.sendStatus(401);    //No hay header de autenticación
     }
 };
 

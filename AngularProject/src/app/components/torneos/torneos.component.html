@@ -12,66 +12,29 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- @for (item of items; track item.name) {               
-                <tr>
-                    <td>1</td>
-                    <td>Torneo Internacional</td>
-                    <td>Competencia con jugadores de todo el mundo.</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">Ver</button>
-                        <button class="btn btn-warning btn-sm">Editar</button>
-                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Campeonato Local</td>
-                    <td>Torneo organizado dentro de la comunidad.</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">Ver</button>
-                        <button class="btn btn-warning btn-sm">Editar</button>
-                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                    </td>
-                </tr>
-                } -->
+                <!-- AFEGIT PER PAU -->
+                @if(torneos.length === 0) {
+                    <td colspan="4">No hay torneos disponibles</td>
+                } @else {
+                    @for(torneo of torneos; track torneo.id) {
+                        <tr>
+                            <td>{{ torneo.id }}</td>
+                            <td>{{ torneo.torneo }}</td>
+                            <td>{{ torneo.description }}</td>
+                            <td>
+                                <!-- <button class="btn btn-primary btn-sm">Ver</button> -->
+                                <button class="btn btn-warning btn-sm" (click)="editarTorneo(torneo)">Editar</button>
+                                <button class="btn btn-danger btn-sm" (click)="eliminarTorneo(torneo)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
     </div>
 </div>
+<!-- @if (torneoSeleccionado) {
+    <app-add-torneo [dataFill]="torneoSeleccionado" (dataToParent)="onDataChange($event)"></app-add-torneo>
+} -->
 
-<!-- AFEGIT PER PAU -->
-<div class="container">
-    <h2 class="mb-4 text-center">Lista de Torneos</h2>
-    
-    @if(torneos.length === 0) {
-        <p>No hay torneos disponibles</p>
-    } @else {
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for(torneo of torneos; track torneo) {
-                        <tr>
-                            <td>{{ torneo.torneo }}</td>
-                            <td>{{ torneo.description }}</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm">Ver</button>
-                                <button class="btn btn-warning btn-sm" (click)="editarTorneo(torneo.torneo)">Editar</button>
-                                <button class="btn btn-danger btn-sm" (click)="eliminarTorneo(torneo.torneo)">Eliminar</button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    }
-</div>
-  
  

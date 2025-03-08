@@ -35,9 +35,9 @@ export class ConnectingToBbddService {
       tap((response: any) => {
         if (response && response.accessToken) {
           localStorage.setItem('accessToken', response.accessToken);
-          alert(localStorage.getItem('accessToken'));
+          // alert(localStorage.getItem('accessToken'));
           console.log(localStorage.getItem('accessToken'));
-          localStorage.clear();
+          // localStorage.clear();
           //test
         }
       })
@@ -53,26 +53,24 @@ export class ConnectingToBbddService {
   }
 
   getTorneos(): Observable<any> {
-
-    return this._http.get<any>(this.url + '/torneos');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this._http.get<any>(this.url + '/torneos', {headers});
   }
   
   crear_torneo(credentials: { torneo: string; description: string }): Observable<any> {
 
     const token = localStorage.getItem('accessToken');
 
-    const headers = new HttpHeaders({
-     'Authorization':`Bearer ${token}`
-  });
-
+    const headers = new HttpHeaders({ 'Authorization':`Bearer ${token}` });
     return this._http.post<any>(this.url + '/crear_torneo', credentials, { headers });
   }
 
 
   actualitzar_torneo(torneo: string, description: string ): Observable<any> {
-
   //   const token = localStorage.getItem('accessToken');
-
   //   const headers = new HttpHeaders({
   //    'Authorization':`Bearer ${token}`
   // });
@@ -95,7 +93,6 @@ export class ConnectingToBbddService {
   findTorneobyName(torneo: string): Observable<any> { 
 
     return this._http.get<any>(this.url + '/torneo_per_nom/' + torneo);
-
 
   }
 

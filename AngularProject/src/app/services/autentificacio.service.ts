@@ -8,15 +8,18 @@ import { BehaviorSubject } from 'rxjs';
 export class AutentificacioService {
 
   constructor(private router: Router) { }
-  private autentificat = new BehaviorSubject<boolean>(false);
+  private autentificat = new BehaviorSubject<boolean>(this.getAuthStatus());
     usuariLoguejat = this.autentificat.asObservable();
   
+    private getAuthStatus(): boolean {
+      // Regresa `true` si el token existe
+      return localStorage.getItem('isAuthenticated') === 'true';
+    }
     usuariAutentificat() {
       this.autentificat.next(true);
       localStorage.setItem('isAuthenticated', 'true');
-
     }
-    
+
     //EL localStorage.clear()
     //Es per esborrar totes les localStorages, inclosa la del accessToken
 

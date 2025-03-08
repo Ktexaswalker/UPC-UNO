@@ -1,24 +1,17 @@
-<div>
+<div class="container">
+  <form [formGroup]="formulari" (ngSubmit)="onSubmit()">
+    <div class="row">
     <p>Torneo a modificar: {{ torneo_name }}</p>
-
-    <form [formGroup]="formulari" (ngSubmit)="onSubmit()">
-
-
-        <div>
-
-
-
-   <label for="brand">Description:</label>
+      <div class="d-flex justify-content-center">
+        <div class="col-6">
+          <label for="description">Description:</label>
           <input id="description" type="text" formControlName="description">
         </div>
-  
-      
-        <button type="submit" [disabled]="!formulari.valid">Actualitzar torneo</button> 
-      </form>
-
-
-
-      
-    
-  </div>
+        <div class="col-6">
+          <button type="submit" [disabled]="!formulari.valid">Actualitzar torneo</button> 
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 

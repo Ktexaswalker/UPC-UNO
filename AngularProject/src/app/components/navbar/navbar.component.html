@@ -62,7 +62,7 @@
                 }
                 @if (logeado) {
                     <li class="nav-item px-3 py-2 mx-md-3 mx-lg-5 d-none d-sm-block border border-success-subtle">
-                        <a class="nav-link text-white p-0" href="#login">Logout</a>
+                        <a class="nav-link text-white p-0" (click)="logout()" routerLink="logout">Logout</a>
                     </li>
                 }
             </ul>

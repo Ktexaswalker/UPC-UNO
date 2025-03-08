@@ -37,10 +37,11 @@ export class LoginComponent implements OnInit {
       this.connectBBDD.login(this.contactForm.value).subscribe({
         next: (response) => {
           this.value = JSON.stringify(response);
-          console.log(this.value)
+          console.log("JSON.stringify(response).accesToken: "+ response.accessToken)
           this.message = "Login successful";
           this.autentificacioService.usuariAutentificat();
           localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('token', JSON.stringify(response.accessToken));
           this.router.navigate(['/']);
         },
         error: (e) => {
