@@ -15,35 +15,54 @@ import { Router } from '@angular/router';
 export class AfegirTorneoComponent {
   value: string="";
   message: string="";
+  torneo: string = '';
+  description: string = '';
   addtorneo: FormGroup;
 
   constructor(private router: Router, private fb: FormBuilder, private connectBBDD: ConnectingToBbddService) {
     this.addtorneo = this.fb.group({
       torneo: ['', Validators.required],
-      descripcion: ['', Validators.required]
+      description: ['', Validators.required]
     });
   }
 
+  // onSubmit() {
+  //   const torneoData = this.addtorneo.value;
+  //   console.log('Datos del formulario:', torneoData);
+  //   if (this.addtorneo.valid) {
+  //     this.connectBBDD.crear_torneo(this.addtorneo.value).subscribe({
+  //       next: (response) => {
+  //         this.value = JSON.stringify(response);
+  //         console.log("JSON.stringify(response).accesToken: "+ response.accessToken)
+  //         this.message = "Tournament added successful";
+  //       },
+  //       error: (e) => {
+  //         console.log(e);
+  //         if (e.status == 404) {
+  //           this.message = "Credencials incorrectes";
+  //         }
+  //         else {
+  //           this.message = "Problemes amb el servidor";
+  //         }
+  //       },
+  //       complete: () => console.info("Tasca completada")
+  //     });
+  //   }
+  // }
   onSubmit() {
     if (this.addtorneo.valid) {
+      this.torneo = this.addtorneo.value.torneo;
+      this.description = this.addtorneo.value.description;
       this.connectBBDD.crear_torneo(this.addtorneo.value).subscribe({
         next: (response) => {
-          this.value = JSON.stringify(response);
-          console.log("JSON.stringify(response).accesToken: "+ response.accessToken)
-          this.message = "Tournament added successful";
+          this.message = "Credencials incorrectes";
+          window.location.reload();
         },
-        error: (e) => {
-          console.log(e);
-          if (e.status == 404) {
-            this.message = "Credencials incorrectes";
-          }
-          else {
-            this.message = "Problemes amb el servidor";
-          }
+        error: (error) => {
+          this.message = "Problemes amb el servidor";
         },
         complete: () => console.info("Tasca completada")
       });
     }
   }
-
 }

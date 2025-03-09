@@ -45,7 +45,7 @@ export class ConnectingToBbddService {
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   }
 
   //Perquè es posa <any> a post i al Observable?
@@ -56,15 +56,14 @@ export class ConnectingToBbddService {
   }
 
   getTorneos(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    })
-    return this._http.get<any>(this.url + '/torneos', {headers});
+    const token = localStorage.getItem('accessToken');
+    // const headers = new HttpHeaders({
+    //   'Authorization': `Bearer ${token}`
+    // })
+    return this._http.get<any>(this.url + '/torneos');
   }
   
   crear_torneo(credentials: { torneo: string; description: string }): Observable<any> {
-
     const token = localStorage.getItem('accessToken');
 
     const headers = new HttpHeaders({ 'Authorization':`Bearer ${token}` });

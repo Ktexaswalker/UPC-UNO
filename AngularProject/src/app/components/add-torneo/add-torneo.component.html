@@ -1,15 +1,22 @@
-<div class="pt-5 invisible z-2" id="add-torneos"></div>
 <div class="container">
   <form [formGroup]="formulari" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="justify-content-around form-control">
-        <p>Torneo a modificar: {{ torneoElegido }}</p>
-        <div class="col-6">
-          <label for="description">Description:</label>
-          <input id="description" type="text" formControlName="description">
-        </div>
-        <div class="col-6">
-          <button class="btn btn-success" type="submit" [disabled]="!formulari.valid" (click)="actualizar()">Actualitzar torneo</button>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-12 form-control">
+        <p class="text-center">Torneo a modificar: <span class="col-8"><strong>{{ torneoElegido | titlecase }}</strong></span></p>
+        <div class="row g-2 align-items-center">
+          <!-- Input de descripción -->
+          <div class="col-md-2 col-4">
+            <label for="description">Descripción:</label>
+          </div>
+          <div class="col-md-6 col-8">
+            <input id="description" type="text" formControlName="description" class="form-control">
+          </div>
+          <!-- Botón -->
+          <div class="col-md-4 col-12">
+            <button class="btn btn-success w-100" type="submit" [disabled]="!formulari.valid">
+              Actualizar Torneo
+            </button>
+          </div>
         </div>
       </div>
     </div>

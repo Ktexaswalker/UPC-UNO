@@ -3,12 +3,14 @@ import { ConnectingToBbddService } from '../../services/connecting-to-bbdd.servi
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-torneo',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TitleCasePipe
   ],
   templateUrl: './add-torneo.component.html',
   styleUrl: './add-torneo.component.css'

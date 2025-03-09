@@ -16,12 +16,12 @@
       </div>
       <!-- DESCRIPCION -->
       <div class="mb3 mt-3">
-            <label for="descripcion" class="form-label">Descripcion: </label>
-            <input class="form-control" type="descripcion" id="descripcion" formControlName="descripcion"
-            placeholder="Descripcion del torneo" required />
+            <label for="description" class="form-label">description: </label>
+            <input class="form-control" type="text" id="description" formControlName="description"
+            placeholder="description del torneo" required />
     
-            @if(this.addtorneo.get('descripcion')?.invalid && this.addtorneo.get('descripcion')?.touched){
-                @if(this.addtorneo.get('descripcion')?.errors?.['required']) {
+            @if(this.addtorneo.get('description')?.invalid && this.addtorneo.get('description')?.touched){
+                @if(this.addtorneo.get('description')?.errors?.['required']) {
                     <p class="text-danger">(Aquest camp és obligatori)</p>
                 }
             }

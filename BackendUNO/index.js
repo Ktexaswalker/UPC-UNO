@@ -36,25 +36,50 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //CONSTANT MIDDLEWARE JWT
+// const authenticateJWT = (req, res, next) => {
+//     const authHeader = req.headers["authorization"];
+//     //En la constante authHeader, el valor prové de:
+//     // Authorization: Bearer <token> ( per exemple Postman)
+//     console.log("wuirerioewurioep"+authHeader);
+//     if (authHeader) {
+//         const token = authHeader.split(' ')[1];
+//         jwt.verify(token, accessTokenSecret, (err, user) => {
+//             if (err) {
+//                 console.log(err)
+//                 return res.sendStatus(403);     //Token no valido
+//             }
+//             req.user = user;
+//             next(); //token correcto
+//         });
+//     } else {
+//         res.sendStatus(401);    //No hay header de autenticación
+//     }
+// };
+
 const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers["authorization"];
-    //En la constante authHeader, el valor prové de:
-    // Authorization: Bearer <token> ( per exemple Postman)
-    console.log("wuirerioewurioep"+authHeader);
     if (authHeader) {
-        const token = authHeader.split(' ')[1];
+        // extrec el token después de 'Bearer '
+        let token = authHeader.split('Bearer ')[1];
+        // esborro comillas
+        token = token.replace(/^"|"$/g, '');
+        console.log("Token sin comillas:", token);
         jwt.verify(token, accessTokenSecret, (err, user) => {
             if (err) {
-                console.log(err)
-                return res.sendStatus(403);     //Token no valido
+                console.log("Error de verificación:", err.name, err.message);
+                return res.sendStatus(403);
             }
             req.user = user;
-            next(); //token correcto
+            next();
         });
     } else {
-        res.sendStatus(401);    //No hay header de autenticación
+        res.sendStatus(401);
     }
 };
+
+
+
+
 
 // Creació recurs /login
 app.post('/login', (req, res) => {
@@ -156,8 +181,9 @@ app.post('/register', (req, res) => {
 //Endpoints CRUD Torneo
 
 //READ
-// app.get('/torneos', authenticateJWT, (req, res) => {
-app.get('/torneos', (req, res) => {
+app.get('/torneos', authenticateJWT, (req, res) => {
+// app.get('/torneos', (req, res) => {
+    console.log('Headers recibidos:', req.headers);
     connection.query(
         "SELECT * FROM torneos",
         (error, results) => {
@@ -175,27 +201,29 @@ app.get('/torneos', (req, res) => {
 });
 
 //CREATE
-app.post('/crear_torneo', (req, res) =>{
+app.post('/crear_torneo', authenticateJWT, (req, res) =>{
+    const { torneo , description } = req.body;
+    console.log("--->>>"+torneo+" description: "+ description);
     connection.query(
         "SELECT * FROM torneos WHERE torneo = ?",
         [torneo],
         (error, results) => {
+            
             if (error) {
                 return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
             }
             if (results.length > 0) {
                 return res.status(400).send({ error: true, message: "Torneo ja registrat" });
             }
-            const { torneo , description } = req.body;
             // Inserim el nou torneo
             connection.query(
                 "INSERT INTO torneos (torneo, description) VALUES (?, ?)",
                 [torneo, description],
                 (error, results) => {
                     if (error) {
-                        return results.status(500).send({ error: true, message: "Error al registrar el torneig" });
+                        return res.status(500).send({ error: true, message: "Error al registrar el torneig" });
                     }
-                    results.status(201).send({ error: false, message: "Torneo registrat correctament" });
+                    res.status(201).send({ error: false, message: "Torneo registrat correctament" });
                 }
             );
         }
@@ -203,7 +231,7 @@ app.post('/crear_torneo', (req, res) =>{
 });
 
 //READ
-app.get('/torneo_per_nom/:torneo', (req, res) => {
+app.get('/torneo_per_nom/:torneo', authenticateJWT, (req, res) => {
     const torneo = req.params.torneo;
     connection.query(
         "SELECT * FROM torneos WHERE torneo = ?",
@@ -229,7 +257,7 @@ app.get('/torneo_per_nom/:torneo', (req, res) => {
 //UPDATE
 //En aquest endpoint només es pot actualitzar el description
 // app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
-app.put('/actualitzar_torneo', (req, res) => {
+app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
     console.log("🚀 Se recibió una solicitud PUT en /actualitzar_torneo");
     console.log("Cuerpo recibido:", req.body);
     const { torneo, description } = req.body;
@@ -278,7 +306,7 @@ app.put('/actualitzar_torneo', (req, res) => {
 
 //DELETE
 // app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
-app.delete('/borrar_torneo/:torneo',  (req, res) => {
+app.delete('/borrar_torneo/:torneo',  authenticateJWT, (req, res) => {
     console.log("DELETE INICIO");
     const torneo = req.params.torneo;
     console.log("DELETE: " , torneo)
