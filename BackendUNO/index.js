@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 //aquesta constant estableix la cadena de connexió
 const connection = mysql.createConnection({ 
     host: 'localhost', 
-    database: 'users', 
+    database: 'torneos', 
     user: 'root', 
     password: '' 
 });
@@ -158,6 +158,7 @@ app.post('/register', (req, res) => {
 //READ
 // app.get('/torneos', authenticateJWT, (req, res) => {
 app.get('/torneos', (req, res) => {
+    console.log('test');
     connection.query(
         "SELECT * FROM torneos",
         (error, results) => {
