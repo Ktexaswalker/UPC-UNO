@@ -16,6 +16,7 @@ import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { Observable } from 'rxjs';
 import { HomeComponent } from './components/home/home.component';
 import { NgClass } from '@angular/common';
+import { AfegirTorneoComponent } from './components/afegir-torneo/afegir-torneo.component';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,8 @@ import { NgClass } from '@angular/common';
     AddTorneoComponent,
     NotfoundComponent,
     HomeComponent,
-    NgClass
+    NgClass,
+    AfegirTorneoComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -52,7 +54,7 @@ export class AppComponent {
   
   esPagina(c:string[]): boolean {
     const rutasSet = new Set(c);
-    if (rutasSet.has("/upc") || rutasSet.has('/login') || rutasSet.has('/register') || rutasSet.has('/torneos')) {
+    if (rutasSet.has("/upc") || rutasSet.has('/login') || rutasSet.has('/register')) {
       this.isFixed = true;
     } else {
       this.isFixed = false;

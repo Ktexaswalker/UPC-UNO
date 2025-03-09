@@ -127,7 +127,6 @@ app.get('/prova', authenticateJWT, (req, res)=> {
 
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
-
     // Comprovem si l'usuari ja existeix
     connection.query(
         "SELECT * FROM users WHERE username = ?",
@@ -158,25 +157,7 @@ app.post('/register', (req, res) => {
 
 //READ
 // app.get('/torneos', authenticateJWT, (req, res) => {
-
-//     connection.query(
-//         "SELECT * FROM torneos",
-//         (error, results) => {
-//             if (error) {
-//                 res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
-//             } else if (results.length > 0) {
-//                 res.status(200).send({ error: false, message: "Torneos obtinguts correctament",
-//                     torneos: results
-//                  });
-//             } else {
-//                 res.status(404).send({ error: true, message: "No hi ha torneos" });
-//             }
-//         }
-//     );
-// });
-
 app.get('/torneos', (req, res) => {
-
     connection.query(
         "SELECT * FROM torneos",
         (error, results) => {
@@ -193,11 +174,8 @@ app.get('/torneos', (req, res) => {
     );
 });
 
-
-
 //CREATE
 app.post('/crear_torneo', authenticateJWT, (req, res) =>{
-
     connection.query(
         "SELECT * FROM torneos WHERE torneo = ?",
         [torneo],
@@ -208,27 +186,24 @@ app.post('/crear_torneo', authenticateJWT, (req, res) =>{
             if (results.length > 0) {
                 return res.status(400).send({ error: true, message: "Torneo ja registrat" });
             }
-
             const { torneo , description } = req.body;
-
             // Inserim el nou torneo
             connection.query(
                 "INSERT INTO torneos (torneo, description) VALUES (?, ?)",
                 [torneo, description],
                 (error, results) => {
                     if (error) {
-                        return res.status(500).send({ error: true, message: "Error al registrar el torneig" });
+                        return results.status(500).send({ error: true, message: "Error al registrar el torneig" });
                     }
-                    res.status(201).send({ error: false, message: "Torneo registrat correctament" });
+                    results.status(201).send({ error: false, message: "Torneo registrat correctament" });
                 }
             );
         }
     );
-
 });
 
+//READ
 app.get('/torneo_per_nom/:torneo', (req, res) => {
-
     const torneo = req.params.torneo;
     connection.query(
         "SELECT * FROM torneos WHERE torneo = ?",
@@ -275,14 +250,11 @@ app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
 
 //DELETE
 app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
-
     const { torneo } = req.body;
-
     connection.query(
         "DELETE FROM torneos WHERE torneo = ?",
         [torneo],
         (error, results) => {
-
             if (error) {
                 return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
             }
@@ -292,14 +264,9 @@ app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
             else {
                 return res.status(404).send({ error: true, message: "No hi ha torneigs" });
             }
-
-
         }
-
     )
-
 });
-
 
 //aquesta aplicació li assignes el port 3000
 app.listen(3000, () => {

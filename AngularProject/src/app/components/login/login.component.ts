@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
           console.log("JSON.stringify(response).accesToken: "+ response.accessToken)
           this.message = "Login successful";
           this.autentificacioService.usuariAutentificat();
-          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('isAuthenticated', 'true');  //Regresa true, si el token existe (service Autenticacio.service.ts)
+          // localStorage.setItem('accessToken', response.accessToken); //siguiendo el index.js, deberia ser este
           localStorage.setItem('token', JSON.stringify(response.accessToken));
           this.router.navigate(['/']);
         },

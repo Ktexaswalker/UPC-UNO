@@ -12,6 +12,7 @@ import { ApplicationConfig } from '@angular/core';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { TorneosComponent } from './components/torneos/torneos.component';
 import { AddTorneoComponent } from './components/add-torneo/add-torneo.component';
+import { AfegirTorneoComponent } from './components/afegir-torneo/afegir-torneo.component';
 
 export const routes: Routes = [
   // {
@@ -46,6 +47,10 @@ export const routes: Routes = [
   {
     path: 'add-torneo',
     component: AddTorneoComponent
+  },
+  {
+    path: 'afegir-torneo',
+    component: AfegirTorneoComponent
   },
   {
     path: '',

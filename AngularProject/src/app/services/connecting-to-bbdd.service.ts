@@ -98,10 +98,5 @@ export class ConnectingToBbddService {
     return this._http.get<any>(this.url + '/torneo_per_nom/' + torneo);
 
   }
-
-
-
-  
-
   
 }
