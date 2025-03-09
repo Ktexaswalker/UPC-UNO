@@ -181,9 +181,6 @@ app.post('/register', (req, res) => {
 //Endpoints CRUD Torneo
 
 //READ
-app.get('/torneos', authenticateJWT, (req, res) => {
-// app.get('/torneos', (req, res) => {
-    console.log('Headers recibidos:', req.headers);
 // app.get('/torneos', authenticateJWT, (req, res) => {
 app.get('/torneos', (req, res) => {
     console.log('test');
