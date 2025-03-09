@@ -26,8 +26,19 @@ export class TorneosComponent {
   // @Output() addTorneo: any;
 
 
- constructor(private _connectingToBbddService: ConnectingToBbddService) {
-    this.torneos.push(this.getTorneos());
+ constructor(private _connectingToBbddService: ConnectingToBbddService, private router: Router) {
+  
+  //Si la localstorage amb el accessToken no existeix, redirigeix a la pàgina de login
+  if(localStorage.getItem('accessToken')){
+
+    this.getTorneos();
+
+  }
+  else{
+
+    this.router.navigate(['/login']);
+
+  }
   }
 
   getTorneos() {
