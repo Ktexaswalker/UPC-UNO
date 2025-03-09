@@ -184,6 +184,9 @@ app.post('/register', (req, res) => {
 app.get('/torneos', authenticateJWT, (req, res) => {
 // app.get('/torneos', (req, res) => {
     console.log('Headers recibidos:', req.headers);
+// app.get('/torneos', authenticateJWT, (req, res) => {
+app.get('/torneos', (req, res) => {
+    console.log('test');
     connection.query(
         "SELECT * FROM torneos",
         (error, results) => {
