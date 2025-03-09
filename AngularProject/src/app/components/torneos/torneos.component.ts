@@ -31,19 +31,6 @@ export class TorneosComponent {
  constructor(private _connectingToBbddService: ConnectingToBbddService, private router: Router) {
   
   //Si la localstorage amb el accessToken no existeix, redirigeix a la pàgina de login
-<<<<<<< HEAD
-  // if(localStorage.getItem('accessToken')){
-
-  //   this.getTorneos();
-
-  // }
-  // else{
-
-  //   this.router.navigate(['/login']);
-
-  // }
-  this.getTorneos();
-=======
     if(localStorage.getItem('accessToken')){
       this.getTorneos();
     } else{
@@ -54,7 +41,6 @@ export class TorneosComponent {
   cambiar(torneoSeleccionado: string) {
     console.log("Torneo actualizado:", torneoSeleccionado);
     this.getTorneos();
->>>>>>> 7e22027453ec359ca3f428c27e57b6884f70445e
   }
 
   getTorneos() {
