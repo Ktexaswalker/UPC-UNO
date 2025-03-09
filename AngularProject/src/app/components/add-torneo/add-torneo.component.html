@@ -1,14 +1,15 @@
+<div class="pt-5 invisible z-2" id="add-torneos"></div>
 <div class="container">
   <form [formGroup]="formulari" (ngSubmit)="onSubmit()">
     <div class="row">
-    <p>Torneo a modificar: {{ torneo_name }}</p>
-      <div class="d-flex justify-content-center">
+      <div class="justify-content-around form-control">
+        <p>Torneo a modificar: {{ torneoElegido }}</p>
         <div class="col-6">
           <label for="description">Description:</label>
           <input id="description" type="text" formControlName="description">
         </div>
         <div class="col-6">
-          <button type="submit" [disabled]="!formulari.valid">Actualitzar torneo</button> 
+          <button class="btn btn-success" type="submit" [disabled]="!formulari.valid" (click)="actualizar()">Actualitzar torneo</button>
         </div>
       </div>
     </div>

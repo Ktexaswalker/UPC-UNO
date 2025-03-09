@@ -229,9 +229,13 @@ app.get('/torneo_per_nom/:torneo', (req, res) => {
 
 //UPDATE
 //En aquest endpoint només es pot actualitzar el description
-app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
+// app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
+app.put('/actualitzar_torneo', (req, res) => {
+    console.log("🚀 Se recibió una solicitud PUT en /actualitzar_torneo");
+    console.log("Cuerpo recibido:", req.body);
     const { torneo, description } = req.body;
-
+    console.log("TORNEO: ", torneo);
+    console.log("DESCRIPCION: ", description);
     connection.query(
         "UPDATE torneos SET description = ? WHERE torneo = ?",
         [description, torneo],
@@ -239,7 +243,7 @@ app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
             if (error) {
                 return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
             }
-            if (results.length > 0) {
+            if (results.affectedRows > 0) {
                 return res.status(200).send({ error: false, message: "Torneo actualitzat correctament" });
             }
             else {
@@ -249,9 +253,36 @@ app.put('/actualitzar_torneo', authenticateJWT, (req, res) => {
     );
 });
 
+// add.put('/actualitzar_torneo/:id', (req, res) => {
+//     const { id } = req.params;
+//     const { torneo, description } = req.body;
+//     if (!id || !torneo || !description) {
+//         return res.status(400).send({ error: true, message: "Faltan datos: ID, torneo y descripción son obligatorios." });
+//     }
+//     const sql = "UPDATE torneos SET torneo = ?, description = ? WHERE id = ?";
+//     connection.query(sql, [torneo, description, id], (error, results) => {
+//         if (error) {
+//             console.error("Error al actualizar torneo:", error);
+//             return res.status(500).send({ error: true, message: "Error al intentar actualizar el torneo" });
+//         }
+//         if (results.affectedRows === 0) {
+//             return res.status(404).send({ error: true, message: "Torneo no encontrado" });
+//         }
+
+//         return res.status(200).send({ 
+//             error: false, 
+//             message: "Torneo actualizado correctamente"
+//         });
+//     });
+// });
+
+
 //DELETE
-app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
-    const { torneo } = req.body;
+// app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
+app.delete('/borrar_torneo/:torneo',  (req, res) => {
+    console.log("DELETE INICIO");
+    const torneo = req.params.torneo;
+    console.log("DELETE: " , torneo)
     connection.query(
         "DELETE FROM torneos WHERE torneo = ?",
         [torneo],
@@ -259,7 +290,7 @@ app.delete('/borrar_torneo', authenticateJWT, (req, res) => {
             if (error) {
                 return res.status(500).send({ error: true, message: "Error en la consulta a la BBDD" });
             }
-            if (results.length > 0) {
+            if (results.affectedRows > 0) {
                 return res.status(200).send({ error: false, message: "Torneig eliminat correctament" });
             }
             else {

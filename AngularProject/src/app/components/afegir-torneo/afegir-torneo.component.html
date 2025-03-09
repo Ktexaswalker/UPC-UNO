@@ -2,8 +2,8 @@
 <div class="container justify-content-center">
     <h1>Añadir torneo</h1>
     <form [formGroup]="addtorneo">
-      <!-- NOMBRE TORNEO -->
-      <div class="mb3 mt-3">
+    <!-- NOMBRE TORNEO -->
+    <div class="mb3 mt-3">
         <label for="torneo" class="form-label">Nombre: </label>
         <input class="form-control" type="text" id="torneo" formControlName="torneo" placeholder="Nombre del torneo"
           required />
@@ -16,21 +16,21 @@
       </div>
       <!-- DESCRIPCION -->
       <div class="mb3 mt-3">
-        <label for="descripcion" class="form-label">Descripcion: </label>
-        <input class="form-control" type="descripcion" id="descripcion" formControlName="descripcion"
-          placeholder="Descripcion del torneo" required />
-  
-        @if(this.addtorneo.get('descripcion')?.invalid && this.addtorneo.get('descripcion')?.touched){
-            @if(this.addtorneo.get('descripcion')?.errors?.['required']) {
-                <p class="text-danger">(Aquest camp és obligatori)</p>
+            <label for="descripcion" class="form-label">Descripcion: </label>
+            <input class="form-control" type="descripcion" id="descripcion" formControlName="descripcion"
+            placeholder="Descripcion del torneo" required />
+    
+            @if(this.addtorneo.get('descripcion')?.invalid && this.addtorneo.get('descripcion')?.touched){
+                @if(this.addtorneo.get('descripcion')?.errors?.['required']) {
+                    <p class="text-danger">(Aquest camp és obligatori)</p>
+                }
             }
-        }
-      </div>
-      <br>
-      <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="addtorneo.invalid">Añadir</button>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="addtorneo.invalid">Añadir</button>
     </form>
     <br>
     <p class="mt-3">
-      {{ message }}
+        {{ message }}
     </p>
   </div>
