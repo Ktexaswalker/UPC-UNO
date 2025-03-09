@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <!-- AFEGIT PER PAU -->
-                @if(torneos.length === 0) {
+                @if(torneos.length === 0 || !torneos) {
                     <td colspan="4">No hay torneos disponibles</td>
                 } @else {
                     @for(torneo of torneos | paginate:{ itemsPerPage: pageSize, currentPage: page }; track torneo ) {
@@ -24,7 +24,7 @@
                             <td>
                                 <!-- <button class="btn btn-primary btn-sm">Ver</button> -->
                                 <button class="btn btn-warning btn-sm" (click)="editarTorneo(torneo)">Editar</button>
-                                <button class="btn btn-danger btn-sm" (click)="eliminarTorneo(torneo)">Eliminar</button>
+                                <button class="btn btn-danger btn-sm" (click)="eliminarTorneo(torneo.torneo)">Eliminar</button>
                             </td>
                         </tr>
                     }   
@@ -36,6 +36,7 @@
         </div>
     </div>
 </div>
+<app-add-torneo [torneoElegido]="torneo_name" (cambiar)="cambiar($event)"></app-add-torneo>
 <!-- @if (torneoSeleccionado) {
     <app-add-torneo [torneo_name]="torneoSeleccionado" (dataToParent)="onDataChange($event)"></app-add-torneo>
 } -->

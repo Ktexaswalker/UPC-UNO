@@ -7,27 +7,26 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-torneo',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './add-torneo.component.html',
   styleUrl: './add-torneo.component.css'
 })
 export class AddTorneoComponent  {
-
-  @Input() torneo_name: string = '';
-
+  @Input() torneoElegido: string = '';
+  @Output() cambiar:EventEmitter<any> = new EventEmitter<string>(); 
   formulari: FormGroup = new FormGroup({});
   torneo_obj: any;
   torneo: string = '';
   description: string = '';
 
-
-  constructor(private conectarBD: ConnectingToBbddService, private formB: FormBuilder, private router : Router ){
+    constructor(private conectarBD: ConnectingToBbddService, private formB: FormBuilder, private router : Router ){
 
   }
 
   ngOnInit(): void {
-    console.log("AQUI EL TORNEO_NAME: "+this.torneo_name);
-    this.getTorneoServei(this.torneo_name);
+    this.getTorneoServei(this.torneoElegido);
 
     this.formulari = this.formB.group({
       torneo: ['', Validators.required],
@@ -47,9 +46,18 @@ export class AddTorneoComponent  {
         console.error('Error al trobar el torneo:', error);
       },
       complete: () =>  console.info('Torneo trobat correcament')
-
     });
+  }
 
+  actualizar() {
+    this.cambiar.emit(this.torneoElegido);
+  }
+
+  ngOnChanges() {
+    if (this.torneoElegido) {
+      console.log("Torneo seleccionado en hijo:", this.torneoElegido);
+      this.getTorneoServei(this.torneoElegido);
+    }
   }
 
   ferform(){
@@ -66,6 +74,7 @@ export class AddTorneoComponent  {
       this.conectarBD.actualitzar_torneo(this.torneo, this.description).subscribe({
         next: (response) => {
           console.log(response);
+          window.location.reload();
         },
         error: (error) => {
           console.error('Error al actualitzar el torneo:', error);

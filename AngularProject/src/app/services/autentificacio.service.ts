@@ -23,7 +23,6 @@ export class AutentificacioService {
 
     //EL localStorage.clear()
     //Es per esborrar totes les localStorages, inclosa la del accessToken
-
     logout() {
       this.autentificat.next(false);
       localStorage.removeItem('isAuthenticated');

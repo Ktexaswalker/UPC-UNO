@@ -78,20 +78,18 @@ export class ConnectingToBbddService {
   //   const headers = new HttpHeaders({
   //    'Authorization':`Bearer ${token}`
   // });
-
-    return this._http.post<any>(this.url + '/actualitzar_torneo', ({torneo, description}));
+    return this._http.put<any>(this.url + '/actualitzar_torneo', ({torneo, description}));
   }
 
-  esborrar_torneo(credentials: { torneo: string }): Observable<any> {
-
+  esborrar_torneo( torneo: string ): Observable<any> {
   //   const token = localStorage.getItem('accessToken');
 
   //   const headers = new HttpHeaders({
   //    'Authorization':`Bearer ${token}`
   // });
 
-    return this._http.post<any>(this.url + '/borrar_torneo', credentials);
-    
+    // return this._http.post<any>(this.url + '/borrar_torneo', torneo);
+    return this._http.delete<any>(this.url + '/borrar_torneo/' + torneo);
   }
 
   findTorneobyName(torneo: string): Observable<any> { 

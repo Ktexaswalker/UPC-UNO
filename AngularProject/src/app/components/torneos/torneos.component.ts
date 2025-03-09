@@ -20,31 +20,33 @@ export class TorneosComponent {
   pageSize:number = 5;
   torneos: any[] = [];
   // torneo: string = '';
+  torneoElegido: any[]=[];
   torneo_name: string = '';
   torneoSeleccionado: any = null;
   @Input() addTorneo: any;
+  @Output() click = new EventEmitter<string>();
   // @Output() addTorneo: any;
 
 
  constructor(private _connectingToBbddService: ConnectingToBbddService, private router: Router) {
   
   //Si la localstorage amb el accessToken no existeix, redirigeix a la pàgina de login
-  if(localStorage.getItem('accessToken')){
+    if(localStorage.getItem('accessToken')){
+      this.getTorneos();
+    } else{
+      this.router.navigate(['/login']);
+    }
+  }
 
+  cambiar(torneoSeleccionado: string) {
+    console.log("Torneo actualizado:", torneoSeleccionado);
     this.getTorneos();
-
-  }
-  else{
-
-    this.router.navigate(['/login']);
-
-  }
   }
 
   getTorneos() {
     this._connectingToBbddService.getTorneos().subscribe({
       next: (response) => {
-        this.torneos = response.torneos;
+        this.torneos = response?.torneos || [];
         console.log(this.torneos);
       },
       error: (error) => {
@@ -55,7 +57,7 @@ export class TorneosComponent {
  }
 
   eliminarTorneo(torneo: string){
-    this._connectingToBbddService.esborrar_torneo({ torneo: torneo }).subscribe({
+    this._connectingToBbddService.esborrar_torneo(torneo).subscribe({
       next: (response) => {
         this.torneos = response.torneos;
         console.log(this.torneos);
@@ -67,17 +69,19 @@ export class TorneosComponent {
     });
   }
 
-  editarTorneo(torneo: string){
-    alert(torneo);
-    this.torneo_name = torneo;
-    //falta  redirigir a add-torneo
-    //  this.router.navigate(['/add-torneo']);
-
-
- }
-
-
-
-
-  
+  editarTorneo(torneo:any){
+    this.torneo_name = torneo.torneo;
+    // this.router.navigate(['/login']);
+    // this._connectingToBbddService.actualitzar_torneo(torneo.torneo, torneo.description).subscribe({
+    //   next: (response) => {
+    //     this.torneos = response.torneos;
+    //   },
+    //   error: (error) => {
+    //     console.error('Error al editar el torneo', error);
+    //   },
+    //   complete: ()=> console.info('El torneo ha sido modificado')
+    // //falta  redirigir a add-torneo
+    // //  this.router.navigate(['/add-torneo']);
+    // });
+  }
 }
